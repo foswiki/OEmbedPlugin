@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1383306444" format="1.1" version="2"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1392223960" format="1.1" version="3"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -55,12 +55,10 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Meetup
    1 MixCloud
    1 MobyPicture
-   1 MyOpera
    1 Nfb
    1 OfficialFM
    1 PollEverywhere 
    1 PollyDaddy
-   1 Qik
    1 Quiz.biz
    1 Revision3
    1 Rdio
@@ -77,7 +75,6 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Ted
    1 Twitpic (embed.ly)
    1 Twitter
-   1 Urtak
    1 Ustream
    1 Viddler
    1 Viddler 
@@ -95,7 +92,7 @@ A lot of providers are available via http://embed.ly. However, you'll have to re
 Some of the listed providers have already been added to this plugin, yet not all. 
 
 ---++ Usage
-*Syntax*: =%EMBED<nop>{"url" [width="..." height="..."]}%=
+*Syntax*: =%EMBED<nop>{"url" [width="..." height="..."]}%= (or =%OEMBED<nop>{...}%=)
 
    * =url=: an external link to the resource to be embedded
    * =width=, =height=: optional maximum values for the image/video/... being embedded (note: not all providers properly implement these parameters)
@@ -161,12 +158,6 @@ See the =oembed.tmpl= file on how to use them.
 </verbatim>
 %EMBED{"http://www.flickr.com/photos/onement/1239189689/" height="400"}%
 
----++ Dipty
-<verbatim class="tml">
-%EMBED{"http://www.dipity.com/nuddlegg/Foswiki/" width="100%"}%
-</verbatim>
-
-%EMBED{"http://www.dipity.com/nuddlegg/Foswiki/" width="100%"}%
 
 ---+++ More examples
 <verbatim class="tml">
@@ -243,6 +234,8 @@ See the =oembed.tmpl= file on how to use them.
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  29 Aug 2014 | removed my opera, qirk and urtak; \
+                 use https whereever possible |
 |  01 Nov 2013 | added more providers |
 |  30 Aug 2013 | added more providers |
 |  24 Jun 2013 | added format, template and custom params; \

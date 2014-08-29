@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2014 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,8 +20,8 @@ use warnings;
 
 use Foswiki::Func ();
 
-our $VERSION = '2.20';
-our $RELEASE = '2.20';
+our $VERSION = '2.30';
+our $RELEASE = '2.30';
 our $SHORTDESCRIPTION = 'Easy embedding of third party content';
 our $NO_PREFS_IN_TOPIC = 1;
 our $core;
@@ -41,6 +41,7 @@ sub initPlugin {
 
   core->init;
 
+  Foswiki::Func::registerTagHandler('OEMBED', sub { return core->EMBED(@_); });
   Foswiki::Func::registerTagHandler('EMBED', sub { return core->EMBED(@_); });
 
   return 1;

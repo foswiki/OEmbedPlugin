@@ -1,0 +1,8 @@
+*.swp
+OEmbedPlugin.md5
+OEmbedPlugin.sha1
+OEmbedPlugin.tgz
+OEmbedPlugin.txt
+OEmbedPlugin.zip
+OEmbedPlugin_installer
+OEmbedPlugin_installer.pl

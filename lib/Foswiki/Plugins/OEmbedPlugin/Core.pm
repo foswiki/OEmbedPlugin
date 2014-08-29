@@ -21,10 +21,10 @@ use warnings;
 use Web::oEmbed ();
 use Foswiki::Func ();
 
-use constant DEBUG => 0; # toggle me
+use constant TRACE => 0; # toggle me
 
 sub writeDebug {
-  print STDERR "OEmbedPlugin::Core - $_[0]\n" if DEBUG;
+  print STDERR "OEmbedPlugin::Core - $_[0]\n" if TRACE;
 }
 
 sub new {
@@ -149,12 +149,13 @@ sub EMBED {
 
   } else {
     $result = $response->render($opts);
+    $result =~ s/http:\/\//https:\/\//g; #SMELL
     if (defined $result) {
       return '<literal>'.$result.'</literal>';
     }
   }
 
-  #print STDERR "WARNING: Hm, can't render response from $url\n";
+  writeDebug("WARNING: Hm, can't render response from $url");
   return $url;
 }
 
