@@ -108,14 +108,7 @@ sub EMBED {
     return "";
   }
 
-  my $width = $params->{width} || Foswiki::Func::getPreferencesValue("OEMBED_MAXWIDTH") || '';
-  my $height = $params->{height} || Foswiki::Func::getPreferencesValue("OEMBED_MAXHEIGHT") || '';
-
-  my $opts;
-  $opts->{maxwidth} = $width if $width;
-  $opts->{maxheight} = $height if $height;
-
-  my $response = eval { $this->{consumer}->embed($url, $opts) };
+  my $response = eval { $this->{consumer}->embed($url) };
   #writeDebug("response=".dump($response));
   if ($@) {
     print STDERR "ERROR: $@\n" if $warn;
@@ -141,15 +134,22 @@ sub EMBED {
   my $result;
 
   if ($providerName eq "YouTube") {
-    my $html = $response->html || '';
+
+    my $thumbnailUrl = $params->{thumbnail_url} || '//i.ytimg.com/vi/$vid/$quality.jpg';
 
     my $quality = $params->{quality} || "mqdefault";
     $quality .= 'default' if $quality =~ /^(mq|hq|sd|maxres)$/;
-    $format =~ s/\$quality/$quality/g;
-    
+
+    my $vid = '';
+    my $html = $response->html || '';
     if ($html =~ /www.youtube.com\/embed\/(.*)\?/) {
-      my $vid = $1;
-      $format =~ s/\$vid\b/$vid/g if defined $format;
+      $vid = $1;
+    }
+
+    if ($format) {
+      $format =~ s/\$thumbnail_url/$thumbnailUrl/g;
+      $format =~ s/\$quality/$quality/g;
+      $format =~ s/\$vid\b/$vid/g;
     }
   }
 
@@ -159,6 +159,7 @@ sub EMBED {
     while (my ($key, $val) = each %$data) {
       $val =~ s/^<!\[CDATA\[([^]+]*)\]\]>$/$1/;
       $val = $params->{$key} if defined $params->{$key};
+      $val .= 'px' if $key =~ /width|height/ && $val =~ /^\d+$/;
       $result =~ s/\$$key\b/$val/g;
     }
     $result =~ s/\$url\b/$url/g;    # ... if left over
@@ -168,7 +169,7 @@ sub EMBED {
     $result = Foswiki::Func::decodeFormatTokens($result);
 
   } else {
-    $result = $response->render($opts);
+    $result = $response->render();
     if (defined $result) {
       $result = '<literal>' . $result . '</literal>';
     }
@@ -179,7 +180,7 @@ sub EMBED {
     return $url;
   }
 
-  $result =~ s/https?:\/\//\/\//g; #SMELL
+  $result =~ s/https?:\/\//\/\//g;    #SMELL
 
   return $result;
 }

@@ -6,7 +6,6 @@ lib/Foswiki/Plugins/OEmbedPlugin.pm 0644
 lib/Web/oEmbed.pm 0644
 lib/Web/oEmbed/Response.pm 0644
 pub/System/OEmbedPlugin/Makefile 0644
-pub/System/OEmbedPlugin/play-hover.png 0644
 pub/System/OEmbedPlugin/play.png 0644
 pub/System/OEmbedPlugin/youtube.css 0644
 pub/System/OEmbedPlugin/youtube.css.gz 0644
