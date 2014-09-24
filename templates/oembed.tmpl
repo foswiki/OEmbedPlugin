@@ -10,3 +10,12 @@ $description
 </div>
 %CLEAR%
 </div>%TMPL:END%
+
+%TMPL:DEF{"YouTube"}%<div class='oEmbedYouTube'><img src='//i.ytimg.com/vi/$vid/$quality.jpg' width='$width' alt='YouTube Video Preview' /></div>%ADDTOZONE{"head"
+  id="OEMBEDPLUGIN::YOUTUBE"
+  text="<link type='text/css' rel='stylesheet' href='%PUBURLPATH%/%SYSTEMWEB%/OEmbedPlugin/youtube.css'  media='all' />"
+}%%ADDTOZONE{"script"
+  id="OEMBEDPLUGIN::YOUTUBE"
+  text="<script type='text/javascript' src='%PUBURLPATH%/%SYSTEMWEB%/OEmbedPlugin/youtube.js'></script>"
+  requires="JQUERYPLUGIN"
+}%%TMPL:END%

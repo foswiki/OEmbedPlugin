@@ -1,3 +1,5 @@
+*.jslint
+*.gz
 *.swp
 OEmbedPlugin.md5
 OEmbedPlugin.sha1
@@ -6,3 +8,5 @@ OEmbedPlugin.txt
 OEmbedPlugin.zip
 OEmbedPlugin_installer
 OEmbedPlugin_installer.pl
+pub/System/OEmbedPlugin/youtube.css
+pub/System/OEmbedPlugin/youtube.js

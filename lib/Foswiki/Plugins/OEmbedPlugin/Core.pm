@@ -20,8 +20,9 @@ use warnings;
 
 use Web::oEmbed ();
 use Foswiki::Func ();
+#use Data::Dump qw(dump);
 
-use constant TRACE => 0; # toggle me
+use constant TRACE => 0;    # toggle me
 
 sub writeDebug {
   print STDERR "OEmbedPlugin::Core - $_[0]\n" if TRACE;
@@ -30,11 +31,9 @@ sub writeDebug {
 sub new {
   my $class = shift;
 
-  my $this = bless({
-    @_
-  }, $class);
+  my $this = bless({@_}, $class);
 
-  $this->{consumer} = Web::oEmbed->new({format=>'json'});
+  $this->{consumer} = Web::oEmbed->new({format => 'json'});
 
   if (defined $Foswiki::cfg{OEmbedPlugin}{Providers}) {
 
@@ -64,18 +63,18 @@ sub new {
 
       foreach $url (@urls) {
         $this->{consumer}->register_provider({
-          name => $provider,
-          url  => $url,
-          regexp  => $regexp,
-          api  => $api,
-          params => $params,
-        });
+            name => $provider,
+            url => $url,
+            regexp => $regexp,
+            api => $api,
+            params => $params,
+          }
+        );
       }
     }
   }
 
   $this->init();
-
 
   return $this;
 }
@@ -116,7 +115,8 @@ sub EMBED {
   $opts->{maxwidth} = $width if $width;
   $opts->{maxheight} = $height if $height;
 
-  my $response = eval {$this->{consumer}->embed($url, $opts)};
+  my $response = eval { $this->{consumer}->embed($url, $opts) };
+  #writeDebug("response=".dump($response));
   if ($@) {
     print STDERR "ERROR: $@\n" if $warn;
   }
@@ -126,13 +126,33 @@ sub EMBED {
     return $url;
   }
 
-  $response->web_page($url); # SMELL: hook in the orig url
+  $response->web_page($url);    # SMELL: hook in the orig url
 
   my $format = $params->{format};
   my $template = $params->{template};
   $format = $this->expandTemplate($template) if defined $template;
 
+  my $providerName = $response->provider_name;
+  unless (defined $format) {
+    $format = $this->expandTemplate($providerName);
+    $format = undef unless $format;
+  }
+
   my $result;
+
+  if ($providerName eq "YouTube") {
+    my $html = $response->html || '';
+
+    my $quality = $params->{quality} || "mqdefault";
+    $quality .= 'default' if $quality =~ /^(mq|hq|sd|maxres)$/;
+    $format =~ s/\$quality/$quality/g;
+    
+    if ($html =~ /www.youtube.com\/embed\/(.*)\?/) {
+      my $vid = $1;
+      $format =~ s/\$vid\b/$vid/g if defined $format;
+    }
+  }
+
   if (defined $format) {
     my $data = $response->data();
     $result = $format;
@@ -141,22 +161,27 @@ sub EMBED {
       $val = $params->{$key} if defined $params->{$key};
       $result =~ s/\$$key\b/$val/g;
     }
-    $result =~ s/\$url\b/$url/g; # ... if left over
+    $result =~ s/\$url\b/$url/g;    # ... if left over
 
     # clean up some
     $result =~ s/\$(thumbnail_url|thumbnail_width|thumbnail_height|html|provider_url|provider_name|description|title|author_name|height|width|author_url|version|type)\b//g;
-    return Foswiki::Func::decodeFormatTokens($result);
+    $result = Foswiki::Func::decodeFormatTokens($result);
 
   } else {
     $result = $response->render($opts);
-    $result =~ s/http:\/\//https:\/\//g; #SMELL
     if (defined $result) {
-      return '<literal>'.$result.'</literal>';
+      $result = '<literal>' . $result . '</literal>';
     }
   }
 
-  writeDebug("WARNING: Hm, can't render response from $url");
-  return $url;
+  unless ($result) {
+    writeDebug("WARNING: Hm, can't render response from $url");
+    return $url;
+  }
+
+  $result =~ s/https?:\/\//\/\//g; #SMELL
+
+  return $result;
 }
 
 1;

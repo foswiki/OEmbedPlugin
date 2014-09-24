@@ -234,6 +234,7 @@ See the =oembed.tmpl= file on how to use them.
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  24 Sep 2014 | added a custom renderer for youtube videos |
 |  29 Aug 2014 | removed my opera, qirk and urtak; \
                  use https whereever possible |
 |  01 Nov 2013 | added more providers |
