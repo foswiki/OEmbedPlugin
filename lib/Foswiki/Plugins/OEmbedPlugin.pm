@@ -20,8 +20,8 @@ use warnings;
 
 use Foswiki::Func ();
 
-our $VERSION = '3.01';
-our $RELEASE = '3.01';
+our $VERSION = '4.00';
+our $RELEASE = '4.00';
 our $SHORTDESCRIPTION = 'Easy embedding of third party content';
 our $NO_PREFS_IN_TOPIC = 1;
 our $core;
@@ -43,6 +43,12 @@ sub initPlugin {
 
   Foswiki::Func::registerTagHandler('OEMBED', sub { return core->EMBED(@_); });
   Foswiki::Func::registerTagHandler('EMBED', sub { return core->EMBED(@_); });
+
+  Foswiki::Func::registerRESTHandler('purgeCache', sub { return core->purgeCache(@_); },
+    authenticate => 0,
+    validate => 0,
+    http_allow => 'GET,POST',
+  );
 
   return 1;
 }

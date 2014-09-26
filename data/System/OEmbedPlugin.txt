@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1392223960" format="1.1" version="3"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1411729022" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -229,11 +229,12 @@ See the =oembed.tmpl= file on how to use them.
 -->
 
 |  Author(s): | Michael Daum|
-|  Copyright: | &copy; 2013 Michael Daum http://michaeldaumconsulting.com |
+|  Copyright: | &copy; 2013-2014 Michael Daum http://michaeldaumconsulting.com |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  25 Sep 2014 | added caching |
 |  24 Sep 2014 | added a custom renderer for youtube videos |
 |  29 Aug 2014 | removed my opera, qirk and urtak; \
                  use https whereever possible |

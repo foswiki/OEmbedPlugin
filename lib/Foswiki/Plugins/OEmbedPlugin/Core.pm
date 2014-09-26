@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2014 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -18,8 +18,8 @@ package Foswiki::Plugins::OEmbedPlugin::Core;
 use strict;
 use warnings;
 
-use Web::oEmbed ();
 use Foswiki::Func ();
+use Foswiki::Plugins::OEmbedPlugin::Consumer ();
 #use Data::Dump qw(dump);
 
 use constant TRACE => 0;    # toggle me
@@ -33,7 +33,7 @@ sub new {
 
   my $this = bless({@_}, $class);
 
-  $this->{consumer} = Web::oEmbed->new({format => 'json'});
+  $this->{consumer} = Foswiki::Plugins::OEmbedPlugin::Consumer->new({format => 'json'});
 
   if (defined $Foswiki::cfg{OEmbedPlugin}{Providers}) {
 
@@ -183,6 +183,12 @@ sub EMBED {
   $result =~ s/https?:\/\//\/\//g;    #SMELL
 
   return $result;
+}
+
+sub purgeCache {
+  my $this = shift;
+
+  $this->{consumer}->purgeCache;
 }
 
 1;
