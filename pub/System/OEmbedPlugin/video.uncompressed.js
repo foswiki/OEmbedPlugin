@@ -1,8 +1,8 @@
 jQuery(function($) {
-  $(document).on("click", ".oEmbedYouTube", function() {
+  $(document).on("click", ".oEmbedVideo", function() {
     var $this = $(this),
       $img = $this.find("img").first(),
-      vid = $this.data("vid"),
+      opts = $this.data(),
       $iframe;
 
     $this.addClass("loading");
@@ -10,8 +10,8 @@ jQuery(function($) {
     $iframe = $('<iframe />', {
       width: $img.width(),
       height: $img.height(),
-      id: vid,
-      src: '//www.youtube.com/embed/' + vid + '?autoplay=1',
+      id: opts.vid,
+      src: opts.src,
       frameborder: 0,
       allowfullscreen: 1,
       load: function() {
@@ -23,3 +23,4 @@ jQuery(function($) {
 
   });
 });
+

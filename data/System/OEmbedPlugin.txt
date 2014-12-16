@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1411729022" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418745014" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -30,9 +30,9 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 CollegeHumor 
    1 Coub
    1 CrowdRanking
-   1 DeviantArt
-   1 DailyMotion
    1 DailyMile
+   1 DailyMotion
+   1 DeviantArt
    1 Dipity
    1 Dotsub
    1 Flickr
@@ -41,11 +41,11 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Geograph Britain and Ireland
    1 Geograph Channel Islands
    1 Geograph Germany 
-   1 Google Maps (embed.ly)
    1 Github 
    1 GMEP
-   1 Hulu
+   1 Google Maps (embed.ly)
    1 HuffDuffer
+   1 Hulu
    1 IMDB (embed.ly)
    1 Instagram
    1 Jest
@@ -60,8 +60,8 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 PollEverywhere 
    1 PollyDaddy
    1 Quiz.biz
-   1 Revision3
    1 Rdio
+   1 Revision3
    1 Roomshare
    1 SapoVideos
    1 Screencast (embed.ly)
@@ -78,9 +78,10 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Ustream
    1 Viddler
    1 Viddler 
+   1 VideoJug
    1 Vimeo 
    1 Vimeon
-   1 VideoJug
+   1 Vine
    1 Washington Post (embed.ly)
    1 WordPress
    1 WordPress TV
@@ -234,6 +235,8 @@ See the =oembed.tmpl= file on how to use them.
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  16 Dec 2014 | have an image preview for vimeo and youtube and only embed the real video when clicking on it; \
+                 added Vine |
 |  25 Sep 2014 | added caching |
 |  24 Sep 2014 | added a custom renderer for youtube videos |
 |  29 Aug 2014 | removed my opera, qirk and urtak; \

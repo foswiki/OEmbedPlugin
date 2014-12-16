@@ -49,12 +49,32 @@ sub embed {
   if ($res) {
     $res = Storable::thaw($res);
   } else {
-    $res = Storable::thaw($res);
     $res = $this->agent->get($url);
     $cache->set($key, Storable::freeze($res));
   }
 
   return Web::oEmbed::Response->new_from_response($res, $uri);
+}
+
+sub request_url {
+  my ($self, $uri, $opt) = @_;
+
+  my $provider = $self->provider_for($uri) or return;
+
+  # SMELL: how to deal with provider interpreting standards differently
+  if ($provider->{name} eq 'Vine') {
+    my $api = $provider->{api};
+    my $id = '';
+
+    if ($uri =~ /.*\/(.*?)$/) {
+      $id = $1;
+      $api =~ s/%id%/$id/g;
+    }
+
+    return URI->new($api);
+  }
+
+  return $self->SUPER::request_url($uri, $opt);
 }
 
 sub purgeCache {

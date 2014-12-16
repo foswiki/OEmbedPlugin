@@ -408,6 +408,16 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       format => 'json',
     },
   },
+
+  Vine => {
+    url => [
+      'http://vine.co/v/*',
+      'http://www.vine.co/v/*',
+      'https://vine.co/v/*',
+      'https://www.vine.co/v/*',
+    ],
+    api => 'https://vine.co/oembed/%id%.json',
+  },
 };
 
 # TODO: check examples for newcomers at https://github.com/mpratt/oembed/commit/8f6e84ed4162fdb85efb972288d8fccf57f0a523

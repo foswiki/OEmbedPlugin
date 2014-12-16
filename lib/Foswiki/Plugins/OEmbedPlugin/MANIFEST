@@ -8,10 +8,11 @@ lib/Web/oEmbed.pm 0644
 lib/Web/oEmbed/Response.pm 0644
 pub/System/OEmbedPlugin/Makefile 0644
 pub/System/OEmbedPlugin/play.png 0644
-pub/System/OEmbedPlugin/youtube.css 0644
-pub/System/OEmbedPlugin/youtube.css.gz 0644
-pub/System/OEmbedPlugin/youtube.js 0644
-pub/System/OEmbedPlugin/youtube.js.gz 0644
-pub/System/OEmbedPlugin/youtube.uncompressed.css 0644
-pub/System/OEmbedPlugin/youtube.uncompressed.js 0644
+pub/System/OEmbedPlugin/video.css 0644
+pub/System/OEmbedPlugin/video.css.gz 0644
+pub/System/OEmbedPlugin/video.js 0644
+pub/System/OEmbedPlugin/video.js.gz 0644
+pub/System/OEmbedPlugin/video.uncompressed.css 0644
+pub/System/OEmbedPlugin/video.uncompressed.js 0644
+pub/System/OEmbedPlugin/vimeo.js.gz 0644
 templates/oembed.tmpl 0644

@@ -115,7 +115,7 @@ sub EMBED {
   }
 
   unless (defined $response) {
-    print STDERR "no response for $url\n";
+    writeDebug("no response for $url");
     return $url;
   }
 
@@ -125,7 +125,7 @@ sub EMBED {
   my $template = $params->{template};
   $format = $this->expandTemplate($template) if defined $template;
 
-  my $providerName = $response->provider_name;
+  my $providerName = $response->provider_name || '';
   unless (defined $format) {
     $format = $this->expandTemplate($providerName);
     $format = undef unless $format;
@@ -135,7 +135,7 @@ sub EMBED {
 
   if ($providerName eq "YouTube") {
 
-    my $thumbnailUrl = $params->{thumbnail_url} || '//i.ytimg.com/vi/$vid/$quality.jpg';
+    my $thumbnailUrl = $params->{thumbnail_url} || 'https://i.ytimg.com/vi/$vid/$quality.jpg';
 
     my $quality = $params->{quality} || "mqdefault";
     $quality .= 'default' if $quality =~ /^(mq|hq|sd|maxres)$/;
@@ -157,6 +157,7 @@ sub EMBED {
     my $data = $response->data();
     $result = $format;
     while (my ($key, $val) = each %$data) {
+      next unless defined $val;
       $val =~ s/^<!\[CDATA\[([^]+]*)\]\]>$/$1/;
       $val = $params->{$key} if defined $params->{$key};
       $val .= 'px' if $key =~ /width|height/ && $val =~ /^\d+$/;
@@ -179,8 +180,6 @@ sub EMBED {
     writeDebug("WARNING: Hm, can't render response from $url");
     return $url;
   }
-
-  $result =~ s/https?:\/\//\/\//g;    #SMELL
 
   return $result;
 }
