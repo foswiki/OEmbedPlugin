@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013-2014 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2015 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -85,6 +85,43 @@ sub init {
   $this->{_doneReadTemplate} = 0;
 }
 
+sub provider {
+  my $this = shift;
+
+  return "" unless defined $Foswiki::cfg{OEmbedPlugin}{Providers};
+
+  foreach my $provider (sort {lc($a) cmp lc($b)} keys %{$Foswiki::cfg{OEmbedPlugin}{Providers}}) {
+    my $url = $Foswiki::cfg{OEmbedPlugin}{Providers}{$provider}{url};
+    my $api = $Foswiki::cfg{OEmbedPlugin}{Providers}{$provider}{api};
+    my $regexp = $Foswiki::cfg{OEmbedPlugin}{Providers}{$provider}{regexp};
+    my $params = $Foswiki::cfg{OEmbedPlugin}{Providers}{$provider}{params};
+
+    print "'$provider' => {\n";
+    print "  url => ";
+
+    if (ref $url) {
+      $url = "[\n    '" . join("',\n    '", sort @$url) . "',\n  ]";
+    } else {
+      $url = "'$url'";
+    }
+
+    print "$url,\n";
+    print "  api => '$api',\n";
+    print "  regexp => '$regexp'\n" if defined $regexp;
+
+    if ($params) {
+      print "  params => {\n";
+      foreach my $key (sort keys %$params) {
+        print "    $key => '$params->{$key}'\n";
+      }
+      print "  },\n";
+    }
+    
+
+    print "},\n\n"; 
+  }
+}
+
 sub expandTemplate {
   my ($this, $tmpl) = @_;
 
@@ -156,19 +193,42 @@ sub EMBED {
   if (defined $format) {
     my $data = $response->data();
     $result = $format;
+
+    my $class = $params->{class} || '';
+    my $width = $params->{width};
+    my $height = $params->{height};
+    my $origWidth = $response->width;
+    my $origHeight = $response->height;
+    if (defined $origWidth && defined $origHeight) {
+      my $ratio = $origWidth / $origHeight;
+      if (defined $width && $width ne 'auto') {
+        if (!defined $height || $height eq 'auto') {
+          $height = $width / $ratio;
+        }
+      } else {
+        if (defined $height && $height ne 'auto') {
+          $width = $height * $ratio;
+        }
+      }
+    }
+
+    $width .= 'px' if defined $width && $width =~ /^[\d\.]+$/;
+    $height .= 'px' if defined $height && $height =~ /^[\d\.]+$/;
+      
+
+    $result =~ s/\$url\b/$url/g;    # ... if left over
+    $result =~ s/\$class\b/$class/g;
+    $result =~ s/\$height\b/$height/g;
+    $result =~ s/\$width\b/$width/g;
+
     while (my ($key, $val) = each %$data) {
       next unless defined $val;
       $val =~ s/^<!\[CDATA\[([^]+]*)\]\]>$/$1/;
       $val = $params->{$key} if defined $params->{$key};
-      $val .= 'px' if $key =~ /width|height/ && $val =~ /^\d+$/;
       $result =~ s/\$$key\b/$val/g;
     }
-    $result =~ s/\$url\b/$url/g;    # ... if left over
 
-    # clean up some
-    $result =~ s/\$(thumbnail_url|thumbnail_width|thumbnail_height|html|provider_url|provider_name|description|title|author_name|height|width|author_url|version|type)\b//g;
     $result = Foswiki::Func::decodeFormatTokens($result);
-
   } else {
     $result = $response->render();
     if (defined $result) {
@@ -180,6 +240,8 @@ sub EMBED {
     writeDebug("WARNING: Hm, can't render response from $url");
     return $url;
   }
+
+  $result =~ s/\$(thumbnail_url|thumbnail_width|thumbnail_height|html|provider_url|provider_name|description|title|author_name|height|width|author_url|version|type|class)\b//g;
 
   return $result;
 }

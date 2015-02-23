@@ -11,9 +11,9 @@ $description
 %CLEAR%
 </div>%TMPL:END%
 
-%TMPL:DEF{"YouTube"}%<div class='oEmbedVideo oEmbedYouTube' data-vid='$vid' data-src='//www.youtube.com/embed/$vid?autoplay=1' style='width:$width'><img src='$thumbnail_url' style='width:100%' alt='YouTube Video Preview' /></div>%TMPL:P{"video::assets"}%%TMPL:END%
+%TMPL:DEF{"YouTube"}%<div class='oEmbedVideo oEmbedYouTube $class' data-vid='$vid' data-src='//www.youtube.com/embed/$vid?autoplay=1' style='width:$width;height:$height;background-image:url($thumbnail_url)'></div>%TMPL:P{"video::assets"}%%TMPL:END%
 
-%TMPL:DEF{"Vimeo"}%<div class='oEmbedVideo oEmbedVimeo' data-vid='$video_id' data-src='//player.vimeo.com/video/$video_id?autoplay=1' style='width:$width'><img src='$thumbnail_url' style='width:100%' alt='Vimeo Video Preview' /></div>%TMPL:P{"video::assets"}%%TMPL:END%
+%TMPL:DEF{"Vimeo"}%<div class='oEmbedVideo oEmbedVimeo $class' data-vid='$video_id' data-src='//player.vimeo.com/video/$video_id?autoplay=1' style='width:$width;height:$height;background-image:url($thumbnail_url)'></div>%TMPL:P{"video::assets"}%%TMPL:END%
 
 %TMPL:DEF{"video::assets"}%%ADDTOZONE{"head"
   id="OEMBEDPLUGIN::CSS"

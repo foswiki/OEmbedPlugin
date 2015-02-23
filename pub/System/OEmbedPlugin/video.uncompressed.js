@@ -1,15 +1,14 @@
 jQuery(function($) {
   $(document).on("click", ".oEmbedVideo", function() {
     var $this = $(this),
-      $img = $this.find("img").first(),
       opts = $this.data(),
       $iframe;
 
     $this.addClass("loading");
 
     $iframe = $('<iframe />', {
-      width: $img.width(),
-      height: $img.height(),
+      width: $this.width(),
+      height: $this.height(),
       id: opts.vid,
       src: opts.src,
       frameborder: 0,
@@ -20,7 +19,9 @@ jQuery(function($) {
     });
 
     $this.html($iframe);
-
+    $this.bind("stop.oembed", function() {
+      $this.removeClass("active loading").empty();
+    });
   });
 });
 

@@ -16,6 +16,12 @@ code to add it to the page, e.g. add an iframe for videos and the like.
 ---++ Supported providers
 
 <noautolink>
+   1 AmChart Live Editor
+   1 Edocr
+   1 AudioSnaps
+   1 Quiz.biz
+   1 FunnyOrDie
+   1 Clyp
    1 23HQ
    1 Alpha App
    1 Amazon (embed.ly)
@@ -46,6 +52,7 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Google Maps (embed.ly)
    1 HuffDuffer
    1 Hulu
+   1 IFTTT
    1 IMDB (embed.ly)
    1 Instagram
    1 Jest
@@ -59,6 +66,7 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 OfficialFM
    1 PollEverywhere 
    1 PollyDaddy
+   1 Portfolium
    1 Quiz.biz
    1 Rdio
    1 Revision3
@@ -230,11 +238,12 @@ See the =oembed.tmpl= file on how to use them.
 -->
 
 |  Author(s): | Michael Daum|
-|  Copyright: | &copy; 2013-2014 Michael Daum http://michaeldaumconsulting.com |
+|  Copyright: | &copy; 2013-2015 Michael Daum http://michaeldaumconsulting.com |
 |  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  23 Feb 2015 | added a few more provider |
 |  16 Dec 2014 | have an image preview for vimeo and youtube and only embed the real video when clicking on it; \
                  added Vine |
 |  25 Sep 2014 | added caching |
