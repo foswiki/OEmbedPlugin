@@ -116,9 +116,9 @@ sub provider {
       }
       print "  },\n";
     }
-    
 
-    print "},\n\n"; 
+
+    print "},\n\n";
   }
 }
 
@@ -214,7 +214,9 @@ sub EMBED {
 
     $width .= 'px' if defined $width && $width =~ /^[\d\.]+$/;
     $height .= 'px' if defined $height && $height =~ /^[\d\.]+$/;
-      
+
+    $height ||= '';
+    $width ||= '';
 
     $result =~ s/\$url\b/$url/g;    # ... if left over
     $result =~ s/\$class\b/$class/g;
