@@ -121,7 +121,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.dailymotion.com/api/oembed/',
   },
 
-  'Deviantart' => {
+  'Deviantart.com' => {
     url => [
       'http://*.deviantart.com/*#/d*',
       'http://*.deviantart.com/art/*',
@@ -164,6 +164,14 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       'https://maps.google.com/maps/*',
     ],
     api => 'http://api.embed.ly/1/oembed',
+  },
+
+  "Facebook(Video)" => {
+    api => "https://www.facebook.com/plugins/video/oembed.json",
+    url => [
+      "https://www.facebook.com/*/videos/*",
+      "https://www.facebook.com/video.php",
+    ],
   },
 
   'Flickr' => {
@@ -495,7 +503,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'https://vine.co/oembed/%id%.json',
   },
 
-  'WordPress' => {
+  'WordPress.com' => {
     url => 'http://*.wordpress.com',
     api => 'http://public-api.wordpress.com/oembed/',
     params => {
@@ -511,7 +519,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.yfrog.com/api/oembed',
   },
 
-  'Youtube' => {
+  'YouTube' => {
     url => [
       'http://*.youtube.com/*',
       'https://*.youtube.com/*',

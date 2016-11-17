@@ -39,6 +39,7 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Dipity
    1 Dotsub
    1 Edocr
+   1 Facebook (video)
    1 Flickr
    1 Foursquare (embed.ly)
    1 FunnyOrDie
@@ -230,6 +231,7 @@ See the =oembed.tmpl= file on how to use them.
 %$DEPENDENCIES%
 
 ---++ Change History
+|  17 Nov 2016 | more providers; converted Web::oEmbed from Any::Moose to Moo |
 |  07 Oct 2015 | multiple providers went in & out |
 |  16 Mar 2015 | added Infogram |
 |  23 Feb 2015 | added a few more provider |
@@ -247,7 +249,7 @@ See the =oembed.tmpl= file on how to use them.
 
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2013-2015 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2013-2016 Michael Daum http://michaeldaumconsulting.com"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%

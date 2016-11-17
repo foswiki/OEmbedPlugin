@@ -1,1 +1,2 @@
-Any::Moose,>=0,cpan,Required
+Moo,>=0,cpan,Required
+Regexp::Assemble,>=0,cpan,Required
