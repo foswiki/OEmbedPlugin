@@ -1,9 +1,10 @@
 package Web::oEmbed::Response;
 use strict;
 use Carp;
-use Any::Moose;
+use Moo;
+use Types::Standard qw(InstanceOf);
 
-has 'http_response', is => 'ro', isa => 'HTTP::Response';
+has 'http_response', is => 'ro', isa => InstanceOf['HTTP::Response'];
 
 has 'matched_uri', is => 'ro';
 has 'type', is => 'rw';

@@ -11,7 +11,7 @@ $Foswiki::cfg{OEmbedPlugin}{EmbedlyKey} = '';
 # List of providers and their oEmbed API endpoints.
 # See http://oembed.com/ and http://embed.ly for more.
 $Foswiki::cfg{OEmbedPlugin}{Providers} = {
-  '23hq' => {
+  '23HQ' => {
     url => 'http://www.23hq.com/*/photo/*',
     api => 'http://www.23hq.com/23/oembed',
   },
@@ -24,7 +24,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'https://alpha-api.app.net/oembed',
   },
 
-  'amCharts' => {
+  'amChartsLiveEditor' => {
     url => [
       'http://live.amcharts.com/*',
       'https://live.amcharts.com/*',
@@ -43,11 +43,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     },
   },
 
-  'Aol' => {
-    url => 'http://on.aol.com/*',
-    api => 'http://on.aol.com/api',
-  },
-
   'AudioSnaps' => {
     url => [
       'http://audiosnaps.com/k/*',
@@ -56,7 +51,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://audiosnaps.com/service/oembed',
   },
 
-  'BlibTv' => {
+  'BlipTV' => {
     url => 'http://*.blip.tv/*',
     api => 'http://blip.tv/oembed/',
   },
@@ -64,6 +59,17 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
   'Cacoo' => {
     url => 'https://cacoo.com/diagrams/*',
     api => 'https://cacoo.com/oembed.json',
+  },
+
+  'ChartBlocks' => {
+    url => [
+      'http://public.chartblocks.com/c/*',
+      'https://public.chartblocks.com/c/*',
+    ],
+    api => 'http://embed.chartblocks.com/1.0/oembed',
+    params => {
+      format => 'json'
+    },
   },
 
   'chirbit' => {
@@ -74,11 +80,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
   'CircuitLab' => {
     url => 'https://www.circuitlab.com/circuit/*',
     api => 'https://www.circuitlab.com/circuit/oembed/',
-  },
-
-  'ClikTrough' => {
-    url => 'http://www.clikthrough.com/theater/*',
-    api => 'http://www.clikthrough.com/services/oembed',
   },
 
   'Clyp' => {
@@ -115,7 +116,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     },
   },
 
-  'DailyMotion' => {
+  'Dailymotion' => {
     url => 'http://*.dailymotion.com/*',
     api => 'http://www.dailymotion.com/api/oembed/',
   },
@@ -135,7 +136,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.dipity.com/oembed/timeline/',
   },
 
-  'DotSub' => {
+  'Dotsub' => {
     url => 'http://dotsub.com/view/*',
     api => 'http://dotsub.com/services/oembed',
   },
@@ -175,7 +176,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.funnyordie.com/oembed.json',
   },
 
-  'Geograph_Britain_Ireland' => {
+  'GeographBritainandIreland' => {
     url => [
       'http://*.geograph.co.uk/*',
       'http://*.geograph.ie/*',
@@ -185,7 +186,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://api.geograph.org.uk/api/oembed',
   },
 
-  'Geograph_Channel_Islands' => {
+  'GeographChannelIslands' => {
     url => [
       'http://*.channel.geographs.org/*',
       'http://*.geograph.org.gg/*',
@@ -196,7 +197,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.geograph.org.gg/api/oembed',
   },
 
-  'Geograph_Germany' => {
+  'GeographGermany' => {
     url => [
       'http://geo-en.hlipp.de/*',
       'http://geo.hlipp.de/*',
@@ -205,9 +206,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://geo.hlipp.de/restapi.php/api/oembed',
   },
 
-  'GithubGist' => {
-    url => 'https://gist.github.com/*',
-    api => 'https://github.com/api/oembed',
+  'GettyImages' => {
+    url => 'http://gty.im/*',
+    api => 'http://embed.gettyimages.com/oembed',
   },
 
   'GMEP' => {
@@ -233,12 +234,17 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.ifixit.com/Embed',
   },
 
-  'ifttt' => {
+  'IFTTT' => {
     url => [
       'http://ifttt.com/recipes/*',
       'https://ifttt.com/recipes/*',
     ],
     api => 'http://www.ifttt.com/oembed/',
+  },
+
+  'Infogram' => {
+    url => 'https://infogr.am/*',
+    api => 'https://infogr.am/oembed',
   },
 
   'Instagram' => {
@@ -249,24 +255,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://api.instagram.com/oembed',
   },
 
-  'Jest' => {
-    url => 'http://www.jest.com/video/*',
-    api => 'http://www.jest.com/oembed.json',
-  },
-
-  'JustinTV' => {
-    url => 'http://www.justin.tv/*',
-    api => 'http://api.justin.tv/api/embed/from_url.json',
-  },
-
   'Kickstarter' => {
     url => 'http://www.kickstarter.com/projects/*',
     api => 'http://www.kickstarter.com/services/oembed',
-  },
-
-  'Kinomap' => {
-    url => 'http://*.kinomap.com/*',
-    api => 'http://www.kinomap.com/oembed',
   },
 
   'Meetup' => {
@@ -278,9 +269,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'https://api.meetup.com/oembed',
   },
 
-  'Mixcloud' => {
-    url => 'http://*.mixcloud.com/*',
+  'MixCloud' => {
+    url => [
+      'http://*.mixcloud.com/*',
+      'https://*.mixcloud.com/*',
+    ],
     api => 'http://www.mixcloud.com/oembed/',
+    params => {
+      format => 'json'
+    },
   },
 
   'MobyPicture' => {
@@ -308,16 +305,12 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://official.fm/services/oembed.json',
   },
 
-  'PollEverywhere' => {
-    url => [
-      'http://www.polleverywhere.com/free_text_polls/*',
-      'http://www.polleverywhere.com/multiple_choice_polls/*',
-      'http://www.polleverywhere.com/polls/*',
-    ],
-    api => 'http://www.polleverywhere.com/services/oembed/',
+  'OnAol' => {
+    url => 'http://on.aol.com/*',
+    api => 'http://on.aol.com/api',
   },
 
-  'PollyDaddy' => {
+  'PollDaddy' => {
     url => [
       'http://*.polldaddy.com/poll/*',
       'http://*.polldaddy.com/ratings/*',
@@ -329,6 +322,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     },
   },
 
+  'PollEverywhere' => {
+    url => [
+      'http://www.polleverywhere.com/free_text_polls/*',
+      'http://www.polleverywhere.com/multiple_choice_polls/*',
+      'http://www.polleverywhere.com/polls/*',
+    ],
+    api => 'http://www.polleverywhere.com/services/oembed/',
+  },
+
   'Portfolium' => {
     url => [
       'https://portfolium.com/entry/*',
@@ -336,17 +338,12 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'https://api.portfolium.com/oembed',
   },
 
-  'Quiz_biz' => {
+  'Quiz.biz' => {
     url => 'http://www.quiz.biz/quizz*',
     api => 'http://www.quiz.biz/api/oembed',
   },
 
-  'QuizBiz' => {
-    url => 'http://www.quiz.biz/quizz-*.html',
-    api => 'http://www.quiz.biz/api/oembed',
-  },
-
-  'QuizzBiz' => {
+  'Quizz.biz' => {
     url => 'http://www.quizz.biz/quizz-*.html',
     api => 'http://www.quizz.biz/api/oembed',
   },
@@ -364,9 +361,12 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.rdio.com/api/oembed/',
   },
 
-  'Revision3' => {
-    url => 'http://*.revision3.com/*',
-    api => 'http://revision3.com/api/oembed/',
+  'ReverbNation' => {
+    url => [
+      'https://www.reverbnation.com/*',
+      'https://www.reverbnation.com/*/songs/*',
+    ],
+    api => 'https://www.reverbnation.com/oembed',
   },
 
   'Roomshare' => {
@@ -395,6 +395,11 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.scribd.com/services/oembed',
   },
 
+  'ShortNote' => {
+    url => 'https://www.shortnote.jp/view/notes/*',
+    api => 'https://www.shortnote.jp/oembed/',
+  },
+
   'Shoudio' => {
     url => [
       'http://shoud.io/*',
@@ -408,7 +413,11 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
 
   'Sketchfab' => {
     url => [
+      'http://sketchfab.com/*/folders/*',
+      'http://sketchfab.com/models/*',
       'http://sketchfab.com/show/*',
+      'https://sketchfab.com/*/folders/*',
+      'https://sketchfab.com/models/*',
       'https://sketchfab.com/show/*',
     ],
     api => 'http://sketchfab.com/oembed',
@@ -445,11 +454,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'http://www.ted.com/talks/oembed.json',
   },
 
-  'Twitter' => {
-    url => 'https://twitter.com/*/status/*',
-    api => 'https://api.twitter.com/1/statuses/oembed.json',
-  },
-
   'Ustream' => {
     url => [
       'http://*.ustream.com/*',
@@ -478,7 +482,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       'https://vimeo.com/*',
       'https://vimeo.com/groups/*/videos/*',
     ],
-    api => 'http://vimeo.com/api/oembed.json',
+    api => 'https://vimeo.com/api/oembed.json',
   },
 
   'Vine' => {
@@ -491,17 +495,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'https://vine.co/oembed/%id%.json',
   },
 
-  'WordPress_com' => {
+  'WordPress' => {
     url => 'http://*.wordpress.com',
     api => 'http://public-api.wordpress.com/oembed/',
-    params => {
-      for => 'foswiki'
-    },
-  },
-
-  'WordPress_tv' => {
-    url => 'http://wordpress.tv/*',
-    api => 'http://public-api.wordpress.com/oembed/1.0/',
     params => {
       for => 'foswiki'
     },
@@ -523,5 +519,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     api => 'https://www.youtube.com/oembed',
   },
 };
+
 
 1;

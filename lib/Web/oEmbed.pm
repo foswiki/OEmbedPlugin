@@ -4,12 +4,14 @@ use strict;
 use 5.8.1;
 our $VERSION = '0.04_001';
 
-use Any::Moose;
+use Moo;
+use Types::Standard qw(InstanceOf HashRef);
+
 use Regexp::Assemble ();
 has 'format'    => (is => 'rw', default => 'json');
 has 'discovery' => (is => 'rw');
-has 'providers' => (is => 'rw', isa => 'HashRef', default => sub { {} });
-has 'agent'     => (is => 'rw', isa => 'LWP::UserAgent', default => sub {
+has 'providers' => (is => 'rw', isa => HashRef, default => sub { {} });
+has 'agent'     => (is => 'rw', isa => InstanceOf['LWP::UserAgent'], default => sub {
                         require LWP::UserAgent;
                         LWP::UserAgent->new( agent => __PACKAGE__ . "/" . $VERSION );
                     });

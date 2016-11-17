@@ -1,6 +1,6 @@
 %META:TOPICINFO{author="ProjectContributor" comment="" date="1418745014" format="1.1" version="1"}%
 ---+!! %TOPIC%
-%SHORTDESCRIPTION%
+%FORMFIELD{"Description"}%
 
 %TOC%
 
@@ -16,23 +16,20 @@ code to add it to the page, e.g. add an iframe for videos and the like.
 ---++ Supported providers
 
 <noautolink>
-   1 AmChart Live Editor
-   1 Edocr
-   1 AudioSnaps
-   1 Quiz.biz
-   1 FunnyOrDie
-   1 Clyp
    1 23HQ
-   1 Alpha App
+   1 Alpha App Net
    1 Amazon (embed.ly)
+   1 AmChart Live Editor
    1 Animoto
-   1 Aol
+   1 On Aol
+   1 AudioSnaps
    1 Blib.tv
    1 Cacoo
+   1 ChartBlocks
    1 Chirbit 
    1 CircuitLab 
-   1 ClikThrough
    1 Clipfish (embed.ly)
+   1 Clyp
    1 CollegeHumor 
    1 Coub
    1 CrowdRanking
@@ -41,24 +38,23 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 DeviantArt
    1 Dipity
    1 Dotsub
+   1 Edocr
    1 Flickr
    1 Foursquare (embed.ly)
    1 FunnyOrDie
    1 Geograph Britain and Ireland
    1 Geograph Channel Islands
    1 Geograph Germany 
-   1 Github 
    1 GMEP
+   1 Getty Images
    1 Google Maps (embed.ly)
    1 HuffDuffer
    1 Hulu
    1 IFTTT
    1 IMDB (embed.ly)
+   1 Infogram
    1 Instagram
-   1 Jest
-   1 JustinTV
    1 Kickstarter
-   1 Kinomap
    1 Meetup
    1 MixCloud
    1 MobyPicture
@@ -69,12 +65,13 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Portfolium
    1 Quiz.biz
    1 Rdio
-   1 Revision3
+   1 ReverbNation
    1 Roomshare
    1 SapoVideos
    1 Screencast (embed.ly)
    1 Screenr
    1 Scribd
+   1 ShortNote
    1 Shoudio
    1 Sketchfab
    1 SlideShare
@@ -82,7 +79,6 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 SpeakerDeck
    1 Ted
    1 Twitpic (embed.ly)
-   1 Twitter
    1 Ustream
    1 Viddler
    1 Viddler 
@@ -92,7 +88,6 @@ code to add it to the page, e.g. add an iframe for videos and the like.
    1 Vine
    1 Washington Post (embed.ly)
    1 WordPress
-   1 WordPress TV
    1 YFrog
    1 Youtube
 </noautolink>
@@ -229,20 +224,14 @@ See the =oembed.tmpl= file on how to use them.
 
 
 ---++ Installation Instructions
-
 %$INSTALL_INSTRUCTIONS%
 
----++ Info
-<!--
-   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
--->
+---++ Dependencies
+%$DEPENDENCIES%
 
-|  Author(s): | Michael Daum|
-|  Copyright: | &copy; 2013-2015 Michael Daum http://michaeldaumconsulting.com |
-|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
-|  Release: | %$RELEASE% |
-|  Version: | %$VERSION% |
-|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+---++ Change History
+|  07 Oct 2015 | multiple providers went in & out |
+|  16 Mar 2015 | added Infogram |
 |  23 Feb 2015 | added a few more provider |
 |  16 Dec 2014 | have an image preview for vimeo and youtube and only embed the real video when clicking on it; \
                  added Vine |
@@ -254,6 +243,15 @@ See the =oembed.tmpl= file on how to use them.
 |  30 Aug 2013 | added more providers |
 |  24 Jun 2013 | added format, template and custom params; \
                  added a few more providers |
-|  Dependencies: | %$DEPENDENCIES% |
-|  Home page: | Foswiki:Extensions/%TOPIC% |
-|  Support: | Foswiki:Support/%TOPIC% |
+
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2013-2015 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
+%META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
+%META:FIELD{name="Release" title="Release" value="%$RELEASE%"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%TOPIC%"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%TOPIC%"}%
+%META:FIELD{name="Version" title="Version" value="%$VERSION%"}%

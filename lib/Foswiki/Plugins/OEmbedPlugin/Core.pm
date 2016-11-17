@@ -20,9 +20,9 @@ use warnings;
 
 use Foswiki::Func ();
 use Foswiki::Plugins::OEmbedPlugin::Consumer ();
-#use Data::Dump qw(dump);
 
 use constant TRACE => 0;    # toggle me
+#use Data::Dump qw(dump);
 
 sub writeDebug {
   print STDERR "OEmbedPlugin::Core - $_[0]\n" if TRACE;
@@ -56,7 +56,7 @@ sub new {
         if ($Foswiki::cfg{OEmbedPlugin}{EmbedlyKey}) {
           $params->{key} = $Foswiki::cfg{OEmbedPlugin}{EmbedlyKey};
         } else {
-          print STDERR "WARNING: no api key for embed.ly ... skipping\n";
+          #print STDERR "WARNING: no api key for embed.ly ... skipping\n";
           next;
         }
       }
@@ -147,6 +147,7 @@ sub EMBED {
 
   my $response = eval { $this->{consumer}->embed($url) };
   #writeDebug("response=".dump($response));
+
   if ($@) {
     print STDERR "ERROR: $@\n" if $warn;
   }
@@ -199,24 +200,25 @@ sub EMBED {
     my $height = $params->{height};
     my $origWidth = $response->width;
     my $origHeight = $response->height;
-    if (defined $origWidth && defined $origHeight) {
+    if ($origWidth && $origHeight) {
       my $ratio = $origWidth / $origHeight;
       if (defined $width && $width ne 'auto') {
         if (!defined $height || $height eq 'auto') {
           $height = $width / $ratio;
         }
+      } elsif ($height && $height ne 'auto') {
+        $width = $height * $ratio;
       } else {
-        if (defined $height && $height ne 'auto') {
-          $width = $height * $ratio;
-        }
+        $width ||= $origWidth;
+        $height ||= $origHeight;
       }
     }
 
     $width .= 'px' if defined $width && $width =~ /^[\d\.]+$/;
     $height .= 'px' if defined $height && $height =~ /^[\d\.]+$/;
 
-    $height ||= '';
-    $width ||= '';
+    $height = 'auto' unless defined $height;
+    $width = 'auto' unless defined $height;
 
     $result =~ s/\$url\b/$url/g;    # ... if left over
     $result =~ s/\$class\b/$class/g;

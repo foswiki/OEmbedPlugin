@@ -20,13 +20,35 @@ use warnings;
 
 use Foswiki::Func ();
 
-our $VERSION = '5.11';
-our $RELEASE = '27 Feb 2015';
+our $VERSION = '5.20';
+our $RELEASE = '16 Mar 2015';
 our $SHORTDESCRIPTION = 'Easy embedding of third party content';
 our $NO_PREFS_IN_TOPIC = 1;
 our $core;
 
-sub core {
+sub initPlugin {
+
+  getCore()->init if defined $core;
+
+  Foswiki::Func::registerTagHandler('OEMBED', sub { return getCore()->EMBED(@_); });
+  Foswiki::Func::registerTagHandler('EMBED', sub { return getCore()->EMBED(@_); });
+
+  Foswiki::Func::registerRESTHandler('purgeCache', sub { return getCore()->purgeCache(@_); },
+    authenticate => 0,
+    validate => 0,
+    http_allow => 'GET,POST',
+  );
+
+  Foswiki::Func::registerRESTHandler('provider', sub { return getCore()->provider(@_); },
+    authenticate => 0,
+    validate => 0,
+    http_allow => 'GET,POST',
+  );
+
+  return 1;
+}
+
+sub getCore {
 
   unless (defined $core) {
     require Foswiki::Plugins::OEmbedPlugin::Core;
@@ -36,28 +58,6 @@ sub core {
   return $core;
 }
 
-
-sub initPlugin {
-
-  core->init;
-
-  Foswiki::Func::registerTagHandler('OEMBED', sub { return core->EMBED(@_); });
-  Foswiki::Func::registerTagHandler('EMBED', sub { return core->EMBED(@_); });
-
-  Foswiki::Func::registerRESTHandler('purgeCache', sub { return core->purgeCache(@_); },
-    authenticate => 0,
-    validate => 0,
-    http_allow => 'GET,POST',
-  );
-
-  Foswiki::Func::registerRESTHandler('provider', sub { return core->provider(@_); },
-    authenticate => 0,
-    validate => 0,
-    http_allow => 'GET,POST',
-  );
-
-  return 1;
-}
 
 
 1;
