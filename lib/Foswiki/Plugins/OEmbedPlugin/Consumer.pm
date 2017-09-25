@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013-2016 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2017 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -46,13 +46,15 @@ sub embed {
 
   my $res = $cache->get($key);
 
-  if ($res) {
+  if (defined $res) {
     $res = Storable::thaw($res);
   } else {
     $res = $this->agent->get($url);
-    $cache->set($key, Storable::freeze($res));
+    my $frozen = Storable::freeze($res) if defined $res;
+    $cache->set($key, $frozen) if defined $frozen;
   }
 
+  return unless defined $res;
   return Web::oEmbed::Response->new_from_response($res, $uri);
 }
 
@@ -81,6 +83,12 @@ sub purgeCache {
   my $this = shift;
 
   $this->_cache->purge;
+}
+
+sub clearCache {
+  my $this = shift;
+
+  $this->_cache->clear;
 }
 
 sub _cache {

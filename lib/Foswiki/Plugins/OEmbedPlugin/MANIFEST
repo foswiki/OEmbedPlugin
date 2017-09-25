@@ -1,3 +1,4 @@
+!noci
 data/System/OEmbedPlugin.txt 0644
 lib/CPAN/lib/Regexp/Assemble.pm 0644
 lib/Foswiki/Plugins/OEmbedPlugin/Config.spec 0644

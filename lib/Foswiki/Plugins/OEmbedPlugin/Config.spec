@@ -7,6 +7,9 @@
 # Otherwise embed.ly providers won't be available.
 $Foswiki::cfg{OEmbedPlugin}{EmbedlyKey} = '';
 
+# **NUMBER**
+$Foswiki::cfg{OEmbedPlugin}{CacheExpire} = 3600;
+
 # **PERL**
 # List of providers and their oEmbed API endpoints.
 # See http://oembed.com/ and http://embed.ly for more.

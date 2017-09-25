@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013-2016 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2017 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -150,11 +150,12 @@ sub EMBED {
 
   if ($@) {
     print STDERR "ERROR: $@\n" if $warn;
+    return "<span class='foswikiAlert'>ERROR: $@</span>" if $warn;
   }
 
   unless (defined $response) {
     writeDebug("no response for $url");
-    return $url;
+    return "<span class='foswikiAlert'>no response from url</span>" if $warn;
   }
 
   $response->web_page($url);    # SMELL: hook in the orig url
@@ -254,6 +255,12 @@ sub purgeCache {
   my $this = shift;
 
   $this->{consumer}->purgeCache;
+}
+
+sub clearCache {
+  my $this = shift;
+
+  $this->{consumer}->clearCache;
 }
 
 1;
