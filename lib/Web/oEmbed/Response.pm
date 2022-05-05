@@ -38,7 +38,7 @@ sub new_from_response {
 
     my $data;
 
-    if ($http_res->content_type =~ /json|text\/plain|javascript/) { # SMELL
+    if ($http_res->content_type =~ /json|text\/plain|javascript|text\/html/) { # SMELL
         $data = $res->parse_json($http_res->content);
     } elsif ($http_res->content_type =~ /xml/) {
         $data = $res->parse_xml($http_res->content);

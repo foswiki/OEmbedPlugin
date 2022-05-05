@@ -4,6 +4,7 @@ lib/CPAN/lib/Regexp/Assemble.pm 0644
 lib/Foswiki/Plugins/OEmbedPlugin/Config.spec 0644
 lib/Foswiki/Plugins/OEmbedPlugin/Consumer.pm 0644
 lib/Foswiki/Plugins/OEmbedPlugin/Core.pm 0644
+lib/Foswiki/Plugins/OEmbedPlugin/DEPENDENCIES 0644
 lib/Foswiki/Plugins/OEmbedPlugin.pm 0644
 lib/Web/oEmbed.pm 0644
 lib/Web/oEmbed/Response.pm 0644
@@ -17,3 +18,4 @@ pub/System/OEmbedPlugin/video.uncompressed.css 0644
 pub/System/OEmbedPlugin/video.uncompressed.js 0644
 pub/System/OEmbedPlugin/vimeo.js.gz 0644
 templates/oembed.tmpl 0644
+tools/convert_providers 0755

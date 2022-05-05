@@ -1,0 +1,107 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use YAML::XS qw(LoadFile);
+use Data::Dump qw(dump);
+use Perl::Tidy ();
+use URI ();
+use URI::QueryParam ();
+
+sub getExistingProvider {
+  no warnings 'once';
+  do "/home/www-data/foswiki/OEmbedPlugin/lib/Foswiki/Plugins/OEmbedPlugin/Config.spec";
+  return $Foswiki::cfg{OEmbedPlugin}{Providers};
+}
+
+sub urlDecode {
+  my $text = shift;
+
+  $text =~ s/%([\da-fA-F]{2})/chr(hex($1))/ge;
+  $text = Encode::decode_utf8($text);
+
+  return $text;
+}
+
+my $existingProvider = getExistingProvider();
+#print STDERR "existing provider: ".join(", ", sort keys %$existingProvider)."\n";
+my $numExisting = scalar(keys %$existingProvider);
+
+my %cfg = ();
+foreach my $fileName (@ARGV) {
+  #print STDERR "### loading $fileName\n";
+  my $yml = LoadFile($fileName); 
+
+  #print STDERR "yml=".dump($yml)."\n";
+
+  foreach my $item (@$yml) {
+    my $provider = $item->{provider_name};
+    $provider =~ s/ +//g;
+
+    my @examples = ();
+    my $params;
+    foreach my $example (@{$item->{endpoints}[0]{example_urls}}) {
+      my $uri = URI->new($example);
+      foreach my $key ($uri->query_param()) {
+        my $val = $uri->query_param($key);
+
+        if ($key eq 'url') {
+          push @examples, urlDecode($val);
+          next;
+        }
+
+        next if $key =~ /^(url|for|maxwidth|maxheight|autoplay|key|href|width|height|caller)$/i;
+        next if $val eq '';
+
+        $val = "json" if $val eq 'xml';
+        $params ||= {};
+        $params->{$key} = $val;
+      }
+    }
+
+    if ($existingProvider->{$provider}) {
+      #print STDERR "### $provider already exists \n";
+      #next;
+    }
+
+    my $url = $item->{endpoints}[0]{schemes};
+    if (ref($url)) {
+      @{$url} = grep {/^https?:/} @$url;
+    }
+    unless ($url) {
+      $url = $item->{provider_url};
+      $url =~ s/\/$//;
+      $url =~ s/^http:\/\//https:\/\//;
+      $url .= '/*';
+    };
+    $cfg{$provider} = {
+      provider => $item->{provider_url},
+      url => $url,
+      api => $item->{endpoints}[0]{url},
+    };
+    $cfg{$provider}{params} = $params if defined $params;
+    $cfg{$provider}{examples} = \@examples if @examples;
+  }
+ 
+}
+
+my $source = dump(\%cfg);
+print '$Foswiki::cfg{OEmbedPlugin}{Providers} = ';
+Perl::Tidy::perltidy(
+  argv => <<'EOA',
+-q
+-npro
+-pbp
+-i=2 
+-bt=2 
+-pt=2 
+-sbt=2
+-nst
+-novalign
+EOA
+  source => \$source,
+);
+print ";\n";
+
+#print STDERR "### found ".scalar(keys %cfg)." new provider(s), $numExisting already exist\n";
+

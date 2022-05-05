@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013-2017 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2022 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,14 +19,11 @@ use strict;
 use warnings;
 
 use Foswiki::Func ();
+use Error qw(:try);
+use HTTP::Request ();
 use Foswiki::Plugins::OEmbedPlugin::Consumer ();
 
 use constant TRACE => 0;    # toggle me
-#use Data::Dump qw(dump);
-
-sub writeDebug {
-  print STDERR "OEmbedPlugin::Core - $_[0]\n" if TRACE;
-}
 
 sub new {
   my $class = shift;
@@ -38,7 +35,7 @@ sub new {
   if (defined $Foswiki::cfg{OEmbedPlugin}{Providers}) {
 
     foreach my $provider (keys %{$Foswiki::cfg{OEmbedPlugin}{Providers}}) {
-      #print STDERR "registering provider $provider\n";
+      #_writeDebug("registering provider $provider");
 
       my $url = $Foswiki::cfg{OEmbedPlugin}{Providers}{$provider}{url};
       my $api = $Foswiki::cfg{OEmbedPlugin}{Providers}{$provider}{api};
@@ -61,7 +58,7 @@ sub new {
         }
       }
 
-      foreach $url (@urls) {
+      foreach my $url (@urls) {
         $this->{consumer}->register_provider({
             name => $provider,
             url => $url,
@@ -133,10 +130,11 @@ sub expandTemplate {
   return Foswiki::Func::expandTemplate($tmpl);
 }
 
+#use Data::Dump qw(dump);
 sub EMBED {
-  my ($this, $session, $params, $theTopic, $theWeb) = @_;
+  my ($this, $session, $params, $topic, $web) = @_;
 
-  writeDebug("called EMBED()");
+  #_writeDebug("called EMBED()");
 
   my $url = $params->{_DEFAULT} || $params->{url};
   my $warn = Foswiki::Func::isTrue($params->{warn}, 1);
@@ -144,17 +142,27 @@ sub EMBED {
     return "<span class='foswikiAlert'>ERROR: no url param</span>" if $warn;
     return "";
   }
+  my ($theWeb, $theTopic) = Foswiki::Func::normalizeWebTopicName($web, $params->{topic}||$topic);
 
-  my $response = eval { $this->{consumer}->embed($url) };
-  #writeDebug("response=".dump($response));
+  my $response;
+  my $error;
 
-  if ($@) {
-    print STDERR "ERROR: $@\n" if $warn;
-    return "<span class='foswikiAlert'>ERROR: $@</span>" if $warn;
+  try {
+    _writeDebug("loading url");
+    $response = $this->{consumer}->embed($url);
+    #_writeDebug("response=".dump($response));
+  } catch Error with {
+    $error = shift;
+  };
+
+  if (defined $error) {
+    #print STDERR "ERROR: $error\n";
+    $error =~ s/ at \/.*$//;
+    return $warn ? "<span class='foswikiAlert'>$error</span>" : "";
   }
 
   unless (defined $response) {
-    writeDebug("no response for $url");
+    _writeDebug("no response for $url");
     return "<span class='foswikiAlert'>no response from url</span>" if $warn;
   }
 
@@ -174,15 +182,27 @@ sub EMBED {
 
   if ($providerName eq "YouTube") {
 
-    my $thumbnailUrl = $params->{thumbnail_url} || 'https://i.ytimg.com/vi/$vid/$quality.jpg';
-
-    my $quality = $params->{quality} || "mqdefault";
-    $quality .= 'default' if $quality =~ /^(mq|hq|sd|maxres)$/;
-
     my $vid = '';
     my $html = $response->html || '';
     if ($html =~ /www.youtube.com\/embed\/(.*)\?/) {
       $vid = $1;
+    }
+
+    my $thumbnailUrl = $params->{thumbnail_url} || 'https://img.youtube.com/vi/$vid/$quality.jpg';
+
+    my $quality = $params->{quality};
+    if (defined $quality && $quality ne "" && $quality ne 'auto') {
+      $quality .= 'default' if $quality =~ /^(mq|hq|sd|maxres)$/;
+    } else {
+      foreach my $q (qw(maxresdefault hqdefault mqdefault sddefault default)) {
+        my $tmp = $thumbnailUrl;
+        $tmp =~ s/\$quality/$q/g;
+        $tmp =~ s/\$vid/$vid/g;
+        if ($this->urlExists($tmp)) {
+          $quality = $q;
+          last;
+        }
+      }
     }
 
     if ($format) {
@@ -201,8 +221,15 @@ sub EMBED {
     my $height = $params->{height};
     my $origWidth = $response->width;
     my $origHeight = $response->height;
+
     if ($origWidth && $origHeight) {
       my $ratio = $origWidth / $origHeight;
+
+      if ($origWidth < 400) { # TODO: make min width configurable
+        $origWidth = 400;
+        $origHeight = $origWidth / $ratio;
+      }
+
       if (defined $width && $width ne 'auto') {
         if (!defined $height || $height eq 'auto') {
           $height = $width / $ratio;
@@ -242,25 +269,83 @@ sub EMBED {
   }
 
   unless ($result) {
-    writeDebug("WARNING: Hm, can't render response from $url");
+    _writeDebug("WARNING: Hm, can't render response from $url");
     return $url;
   }
+
+  $result =~ s/\$topic/$theTopic/g;
+  $result =~ s/\$web/$theWeb/g;
 
   $result =~ s/\$(thumbnail_url|thumbnail_width|thumbnail_height|html|provider_url|provider_name|description|title|author_name|height|width|author_url|version|type|class)\b//g;
 
   return $result;
 }
 
-sub purgeCache {
-  my $this = shift;
+sub OEMBED_PROVIDER {
+  my ($this, $session, $params, $topic, $web) = @_;
 
-  $this->{consumer}->purgeCache;
+  my $id = $params->{_DEFAULT} || $params->{id};
+  my $format = $params->{format} || '   1 [[$provider][$name]]';
+  my $header = $params->{header} // '';
+  my $footer = $params->{footer} // '';
+  my $sep = $params->{separator} // '$n';
+  my $include = $params->{include};
+  my $exclude = $params->{exclude};
+  my $exampleFormat = $params->{exampleformat} // '$url';
+  my $exampleHeader = $params->{exampleheader} // '';
+  my $exampleFooter = $params->{examplefooter} // '';
+  my $exampleSep = $params->{exampleseparator} // ', ';
+  my @result = ();
+
+  my @ids = ();
+  if (defined $id) {
+    push @ids, $id if defined $Foswiki::cfg{OEmbedPlugin}{Providers}{$id};
+  } else {
+    @ids = keys %{$Foswiki::cfg{OEmbedPlugin}{Providers}};
+  }
+
+  foreach my $name (sort @ids) {
+    next if $include && $name !~ /$include/;
+    next if $exclude && $name =~ /$exclude/;
+
+    my $rec = $Foswiki::cfg{OEmbedPlugin}{Providers}{$name};
+
+    my @examples = ();
+    if ($rec->{examples}) {
+      foreach my $example (sort @{$rec->{examples}}) {
+        my $exline = $exampleFormat;
+        $exline =~ s/\$url\b/$example/g;
+        push @examples, $exline;
+      }
+    }
+    my $examples = @examples ? $exampleHeader.join($exampleSep, @examples).$exampleFooter:"";
+    
+    my $line = $format;
+    $line =~ s/\$examples\b/$examples/g;
+    $line =~ s/\$name\b/$name/g;
+    $line =~ s/\$url\b/join(", ", @{$rec->{url}})/ge;
+    $line =~ s/\$api\b/$rec->{api}/g;
+    $line =~ s/\$provider\b/$rec->{provider}/g;
+
+    push @result, $line if $line ne "";;
+  }
+
+  return "" unless @result;
+  return Foswiki::Func::decodeFormatTokens($header.join($sep, @result).$footer);
 }
 
-sub clearCache {
-  my $this = shift;
+sub urlExists {
+  my ($this, $url) = @_;
 
-  $this->{consumer}->clearCache;
+  my $request = HTTP::Request->new(HEAD => $url);
+  my $ua = Foswiki::Contrib::CacheContrib::getUserAgent();
+  my $res = $ua->request($request);
+
+  return $res->is_success ? 1 : 0;
+}
+
+sub _writeDebug {
+  print STDERR "OEmbedPlugin::Core - $_[0]\n" if TRACE;
 }
 
 1;

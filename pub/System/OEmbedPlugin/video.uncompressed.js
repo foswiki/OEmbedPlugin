@@ -1,3 +1,13 @@
+/*
+ * video.js
+ *
+ * (c)opyright 2013-2022 Michael Daum http://michaeldaumconsulting.com
+ *
+ * Licensed under the GPL license http://www.gnu.org/licenses/gpl.html
+ *
+ */
+"use strict";
+
 jQuery(function($) {
   $(document).on("click", ".oEmbedVideo", function() {
     var $this = $(this),
@@ -10,9 +20,8 @@ jQuery(function($) {
       width: $this.width(),
       height: $this.height(),
       id: opts.vid,
-      src: opts.src,
-      frameborder: 0,
       allowfullscreen: 1,
+      src: opts.src,
       load: function() {
         $this.removeClass("loading").addClass("active");
       }
@@ -24,4 +33,3 @@ jQuery(function($) {
     });
   });
 });
-

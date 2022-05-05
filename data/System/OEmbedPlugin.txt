@@ -15,94 +15,255 @@ code to add it to the page, e.g. add an iframe for videos and the like.
 
 ---++ Supported providers
 
-<noautolink>
-   1 23HQ
-   1 Alpha App Net
-   1 Amazon (embed.ly)
-   1 AmChart Live Editor
-   1 Animoto
-   1 On Aol
-   1 AudioSnaps
-   1 Blib.tv
-   1 Cacoo
-   1 ChartBlocks
-   1 Chirbit 
-   1 CircuitLab 
-   1 Clipfish (embed.ly)
-   1 Clyp
-   1 CollegeHumor 
-   1 Coub
-   1 CrowdRanking
-   1 DailyMile
-   1 DailyMotion
-   1 DeviantArt
-   1 Dipity
-   1 Dotsub
-   1 Edocr
-   1 Facebook (video)
-   1 Flickr
-   1 Foursquare (embed.ly)
-   1 FunnyOrDie
-   1 Geograph Britain and Ireland
-   1 Geograph Channel Islands
-   1 Geograph Germany 
-   1 GMEP
-   1 Getty Images
-   1 Google Maps (embed.ly)
-   1 HuffDuffer
-   1 Hulu
-   1 IFTTT
-   1 IMDB (embed.ly)
-   1 Infogram
-   1 Instagram
-   1 Kickstarter
-   1 Meetup
-   1 MixCloud
-   1 MobyPicture
-   1 Nfb
-   1 OfficialFM
-   1 PollEverywhere 
-   1 PollyDaddy
-   1 Portfolium
-   1 Quiz.biz
-   1 Rdio
-   1 ReverbNation
-   1 Roomshare
-   1 SapoVideos
-   1 Screencast (embed.ly)
-   1 Screenr
-   1 Scribd
-   1 ShortNote
-   1 Shoudio
-   1 Sketchfab
-   1 SlideShare
-   1 SoundCloud 
-   1 SpeakerDeck
-   1 Ted
-   1 Twitpic (embed.ly)
-   1 Ustream
-   1 Viddler
-   1 Viddler 
-   1 VideoJug
-   1 Vimeo 
-   1 Vimeon
-   1 Vine
-   1 Washington Post (embed.ly)
-   1 WordPress
-   1 YFrog
-   1 Youtube
-</noautolink>
+%IF{"context OEmbedPluginEnabled"
+  then="$percntOEMBED_PROVIDER$percnt"
+  else="
+   1 [[http://www.23hq.com][23HQ]]
+   1 [[https://abraia.me][Abraia]]
+   1 [[http://www.adways.com][Adways]]
+   1 [[https://alpha.app.net/browse/posts/][AlphaAppNet]]
+   1 [[https://www.altrulabs.com][Altru]]
+   1 [[https://www.animatron.com/][Animatron]]
+   1 [[http://animoto.com/][Animoto]]
+   1 [[https://www.apester.com][Apester]]
+   1 [[https://app.archivos.digital][Archivos]]
+   1 [[https://audioclip.naver.com][AudioClip]]
+   1 [[http://audiosnaps.com][AudioSnaps]]
+   1 [[https://audioboom.com][Audioboom]]
+   1 [[https://www.audiomack.com][Audiomack]]
+   1 [[https://www.avocode.com/][Avocode]]
+   1 [[https://backtracks.fm][Backtracks]]
+   1 [[https://www.beautiful.ai/][Beautiful.AI]]
+   1 [[https://blackfire.io][Blackfire.io]]
+   1 [[https://blogcast.host/][Blogcast]]
+   1 [[http://boxofficebuz.com][BoxOfficeBuz]]
+   1 [[https://view.briovr.com/][BrioVR]]
+   1 [[https://buttondown.email/][Buttondown]]
+   1 [[https://cmc.byzart.eu][ByzartProject]]
+   1 [[https://cacoo.com][Cacoo]]
+   1 [[https://carbonhealth.com][CarbonHealth]]
+   1 [[http://img.catbo.at/][CatBoat]]
+   1 [[http://www.ceros.com/][Ceros]]
+   1 [[http://www.chartblocks.com/][ChartBlocks]]
+   1 [[https://www.circuitlab.com/][CircuitLab]]
+   1 [[http://www.clipland.com/][Clipland]]
+   1 [[http://clyp.it/][Clyp]]
+   1 [[http://www.codehs.com][CodeHS]]
+   1 [[https://codesandbox.io][CodeSandbox]]
+   1 [[https://codepen.io][Codepen]]
+   1 [[https://codepoints.net][Codepoints]]
+   1 [[http://www.collegehumor.com/][CollegeHumor]]
+   1 [[https://commaful.com][Commaful]]
+   1 [[http://coub.com/][Coub]]
+   1 [[http://crowdranking.com][CrowdRanking]]
+   1 [[http://www.cyranosystems.com/][CyranoSystems]]
+   1 [[https://d.tube/][DTube]]
+   1 [[http://www.dailymile.com][DailyMile]]
+   1 [[https://www.dailymotion.com][Dailymotion]]
+   1 [[https://www.deseret.com][DeseretNews]]
+   1 [[http://www.deviantart.com][Deviantart.com]]
+   1 [[https://www.didacte.com/][Didacte]]
+   1 [[https://www.ultimedia.com/][Digiteka]]
+   1 [[http://www.dipity.com][Dipity]]
+   1 [[https://www.docdroid.net/][DocDroid]]
+   1 [[http://dotsub.com/][Dotsub]]
+   1 [[http://egliseinfo.catholique.fr/][EgliseInfo]]
+   1 [[http://embedarticles.com/][EmbedArticles]]
+   1 [[http://api.embed.ly/][Embedly]]
+   1 [[https://www.ethfiddle.com/][Ethfiddle]]
+   1 [[https://eyrie.io/][Eyrie]]
+   1 [[https://www.fite.tv/][FITE]]
+   1 [[http://www.foxsports.com.au][FOXSPORTSAustralia]]
+   1 [[https://www.facebook.com/][Facebook]]
+   1 [[https://app.getfader.com][Fader]]
+   1 [[https://faithlifetv.com][FaithlifeTV]]
+   1 [[https://flat.io][Flat]]
+   1 [[https://www.flickr.com/][Flickr]]
+   1 [[https://flourish.studio/][Flourish]]
+   1 [[https://www.fontself.com][Fontself]]
+   1 [[https://framebuzz.com/][FrameBuzz]]
+   1 [[http://www.funnyordie.com/][FunnyOrDie]]
+   1 [[https://giphy.com][GIPHY]]
+   1 [[https://gtchannel.com][GTChannel]]
+   1 [[https://www.geograph.org.uk/][GeographBritainandIreland]]
+   1 [[http://channel-islands.geograph.org/][GeographChannelIslands]]
+   1 [[http://geo-en.hlipp.de/][GeographGermany]]
+   1 [[http://www.gettyimages.com/][GettyImages]]
+   1 [[https://gfycat.com/][Gfycat]]
+   1 [[https://www.gifnote.com/][Gifnote]]
+   1 [[https://gloria.tv/][GloriaTV]]
+   1 [[https://gyazo.com][Gyazo]]
+   1 [[https://homey.app][Homey]]
+   1 [[http://huffduffer.com][HuffDuffer]]
+   1 [[http://www.hulu.com/][Hulu]]
+   1 [[http://www.ifttt.com/][IFTTT]]
+   1 [[https://player.indacolive.com/][Indaco]]
+   1 [[https://infogram.com/][Infogram]]
+   1 [[https://infoveave.net/][Infoveave]]
+   1 [[https://www.injurymap.com/][Injurymap]]
+   1 [[https://www.inoreader.com][Inoreader]]
+   1 [[https://instagram.com][Instagram]]
+   1 [[https://issuu.com/][Issuu]]
+   1 [[https://jovian.ml/][Jovian]]
+   1 [[https://tv.kakao.com/][KakaoTv]]
+   1 [[http://www.kickstarter.com][Kickstarter]]
+   1 [[https://www.kidoju.com/][Kidoju]]
+   1 [[https://kirim.email/][Kirim.Email]]
+   1 [[https://kit.co/][Kit]]
+   1 [[http://www.kitchenbowl.com][Kitchenbowl]]
+   1 [[http://jdr.knacki.info][Knacki]]
+   1 [[http://learningapps.org/][LearningApps.org]]
+   1 [[https://pod.univ-lille.fr/][Lille.Pod]]
+   1 [[https://livestream.com/][Livestream]]
+   1 [[https://ludus.one][Ludus]]
+   1 [[http://mathembed.com][MathEmbed]]
+   1 [[https://matterport.com/][Matterport]]
+   1 [[https://medienarchiv.zhdk.ch/][MedienarchivderKünste-ZürcherHochschulederKünste]]
+   1 [[http://www.meetup.com][Meetup]]
+   1 [[https://web.microsoftstream.com][Microsoft Stream]]
+   1 [[https://mermaid.ink][MermaidInk]]
+   1 [[http://api.microlink.io][Microlink]]
+   1 [[https://mixcloud.com/][MixCloud]]
+   1 [[http://www.mobypicture.com][MobyPicture]]
+   1 [[http://modelo.io/][Modelo]]
+   1 [[https://www.morphcast.com][MorphCast]]
+   1 [[https://musicboxmaniacs.com/][MusicBoxManiacs]]
+   1 [[https://namchey.com][Namchey]]
+   1 [[https://www.nb.no/][Nasjonalbiblioteket]]
+   1 [[https://naturalatlas.com/][NaturalAtlas]]
+   1 [[https://www.oz.com/][OZ]]
+   1 [[https://www.odds.com.au][Odds.com.au]]
+   1 [[http://official.fm][OfficialFM]]
+   1 [[https://omniscope.me/][Omniscope]]
+   1 [[http://on.aol.com/][OnAol]]
+   1 [[http://www.ora.tv/][OraTV]]
+   1 [[https://orbitvu.co][Orbitvu]]
+   1 [[https://www.oumy.com/][Oumy]]
+   1 [[https://outplayed.tv/][Outplayed.tv]]
+   1 [[https://overflow.io][Overflow]]
+   1 [[https://www.pastery.net][Pastery]]
+   1 [[https://www.pingvp.com/][PingVP]]
+   1 [[http://www.pixdor.com/][Pixdor]]
+   1 [[http://podbean.com][Podbean]]
+   1 [[https://www.polarishare.com/][PolarisShare]]
+   1 [[http://polldaddy.com][PollDaddy]]
+   1 [[http://www.sellwithport.com/][Port]]
+   1 [[https://portfolium.com][Portfolium]]
+   1 [[http://www.quiz.biz/][Quiz.biz]]
+   1 [[http://www.quizz.biz/][Quizz.biz]]
+   1 [[https://rapidengage.com][RapidEngage]]
+   1 [[https://reddit.com/][Reddit]]
+   1 [[http://www.releasewire.com/][ReleaseWire]]
+   1 [[https://repl.it/][Replit]]
+   1 [[http://repubhub.icopyright.net/][RepubHub]]
+   1 [[https://www.reverbnation.com/][ReverbNation]]
+   1 [[https://www.riffreporter.de/][RiffReporter]]
+   1 [[http://roomshare.jp][Roomshare]]
+   1 [[https://roosterteeth.com][RoosterTeeth]]
+   1 [[https://rumble.com/][Rumble]]
+   1 [[http://videos.sapo.pt][SapoVideos]]
+   1 [[http://www.screen9.com/][Screen9]]
+   1 [[http://www.screencast.com/][Screencast.com]]
+   1 [[http://www.screenr.com/][Screenr]]
+   1 [[https://scribblemaps.com][ScribbleMaps]]
+   1 [[http://www.scribd.com/][Scribd]]
+   1 [[http://www.sendtonews.com/][SendtoNews]]
+   1 [[https://www.shortnote.jp/][ShortNote]]
+   1 [[http://shoudio.com][Shoudio]]
+   1 [[https://showtheway.io][ShowtheWay,actionablelocationinfo]]
+   1 [[https://simplecast.com][Simplecast]]
+   1 [[https://onsizzle.com/][Sizzle]]
+   1 [[http://sketchfab.com][Sketchfab]]
+   1 [[http://www.slideshare.net/][SlideShare]]
+   1 [[https://smashnotes.com][SmashNotes]]
+   1 [[https://www.smugmug.com/][SmugMug]]
+   1 [[https://www.socialexplorer.com/][SocialExplorer]]
+   1 [[https://song.link][Songlink]]
+   1 [[http://soundcloud.com/][SoundCloud]]
+   1 [[https://soundsgood.co][Soundsgood]]
+   1 [[https://speakerdeck.com][SpeakerDeck]]
+   1 [[https://bespotful.com][Spotful]]
+   1 [[https://spotify.com/][Spotify]]
+   1 [[https://www.spreaker.com/][Spreaker]]
+   1 [[https://purl.stanford.edu/][StanfordDigitalRepository]]
+   1 [[https://www.streamone.nl][StreamOneCloud]]
+   1 [[https://streamable.com/][Streamable]]
+   1 [[https://www.sutori.com/][Sutori]]
+   1 [[https://www.sway.com][Sway]]
+   1 [[https://www.ted.com][TED]]
+   1 [[https://www.nytimes.com][TheNewYorkTimes]]
+   1 [[https://theysaidso.com/][TheySaidSo]]
+   1 [[https://www.tickcounter.com][TickCounter]]
+   1 [[https://www.toornament.com/][Toornament]]
+   1 [[http://www.topy.se/][Topy]]
+   1 [[https://www.tuxx.be/][Tuxx]]
+   1 [[https://www.twitch.tv][Twitch]]
+   1 [[http://www.twitter.com/][Twitter]]
+   1 [[https://typecast.ai][TypeCast]]
+   1 [[https://typlog.com][Typlog]]
+   1 [[https://mais.uol.com.br/][UOL]]
+   1 [[https://player.ubideo.com/][Ubideo]]
+   1 [[https://mediatheque.univ-paris1.fr/][UnivParis1.Pod]]
+   1 [[https://map.cam.ac.uk][UniversityofCambridgeMap]]
+   1 [[http://www.ustream.tv][Ustream]]
+   1 [[https://www.utposts.com/][Utposts]]
+   1 [[http://uttles.com][Uttles]]
+   1 [[http://www.vevo.com/][VEVO]]
+   1 [[https://www.vlive.tv][VLIVE]]
+   1 [[http://veer.tv/][VeeRVR]]
+   1 [[http://verse.com/][Verse]]
+   1 [[http://www.videojug.com][VideoJug]]
+   1 [[https://vidl.it/][Vidlit]]
+   1 [[https://www.vidmizer.com/][Vidmizer]]
+   1 [[http://www.vidyard.com][Vidyard]]
+   1 [[https://vimeo.com/][Vimeo]]
+   1 [[http://www.viziosphere.com][Viziosphere]]
+   1 [[https://vizydrop.com][Vizydrop]]
+   1 [[https://vlipsy.com/][Vlipsy]]
+   1 [[https://www.vlurb.co/][Vlurb]]
+   1 [[https://voxsnap.com/][VoxSnap]]
+   1 [[https://www.wiredrive.com/][Wiredrive]]
+   1 [[https://wistia.com/][Wistia,Inc.]]
+   1 [[http://www.wootled.com/][Wootled]]
+   1 [[http://wordpress.com/][WordPress.com]]
+   1 [[https://web.xpression.jp][Xpression]]
+   1 [[http://yfrog.com/][YFrog]]
+   1 [[http://yesik.it][Yes,IKnowIT!]]
+   1 [[https://www.youtube.com/][YouTube]]
+   1 [[https://app.zingsoft.com][ZingSoft]]
+   1 [[https://www.znipe.tv/][ZnipeTV]]
+   1 [[https://live.amcharts.com/][amChartsLiveEditor]]
+   1 [[http://www.chirbit.com/][chirbit.com]]
+   1 [[http://www.edocr.com][edocr]]
+   1 [[https://www.edumedia-sciences.com/][eduMedia]]
+   1 [[https://hearthis.at/][hearthis.at]]
+   1 [[http://www.iFixit.com][iFixit]]
+   1 [[https://www.isnare.com/][iSnareArticles]]
+   1 [[http://inphood.com/][inphood]]
+   1 [[https://music.ivlis.kr/][ivlismusic]]
+   1 [[https://me.me/][me.me]]
+   1 [[https://mybeweeg.com][myBeweeg]]
+   1 [[https://www.nanoo.tv/][nanoo.tv]]
+   1 [[http://www.nfb.ca/][nfb.ca]]
+   1 [[https://posixion.com/][posiXion]]
+   1 [[http://tvcf.co.kr][tvcf]]
+   1 [[https://www.ustudio.com][uStudio,Inc.]]
+   1 [[http://www.wecandeo.com/][wecandeo]]
+   1 [[http://www.wizer.me/][wizer.me]]
+"}%
 
 A lot of providers are available via http://embed.ly. However, you'll have to register to get an api-key.
 Some of the listed providers have already been added to this plugin, yet not all. 
 
----++ Usage
-*Syntax*: =%EMBED<nop>{"url" [width="..." height="..."]}%= (or =%OEMBED<nop>{...}%=)
+---++ Syntax
+---+++ EMBED
+=%EMBED<nop>{"url" [width="..." height="..."]}%= (or =%OEMBED<nop>{...}%=)
 
    * =url=: an external link to the resource to be embedded
    * =width=, =height=: optional maximum values for the image/video/... being embedded (note: not all providers properly implement these parameters)
    * =format=: a format string to implement a custom renderer
    * =template=: the name of a template defined in =oembed.tmpl=; known templates shipped with %TOPIC% are "article" (todo add more)
+   * =quality= (youtube only): specify the thumbnail quality; possible values are =hq=, =mq=, =sd=, =default= and =auto=; the latter will find out automatically which best thumbnail is available
    * =&lt;custom_key>=: any custom key="value" pair may be defined and made use of in the format (or template) using =$custom_key= to expand it; 
      these have higher precendence than the default values submitted by the oembed provider; for example use a custom =thumbnail_width="100"= parameter
      to override the default width.
@@ -127,101 +288,70 @@ In addition all standard format tokens can be used (=$percnt=, =$dollar=, =$nop=
 
 See the =oembed.tmpl= file on how to use them.
 
----++ Examples
+---+++ OEMBED_PROVIDER
+=%<nop>OEMBED_PROVIDER{["&lt;id>"]}%=
 
----+++ Washington Post
+   * =id=: provider name to display the configuration for
+   * =format=: format string, defaults to =&nbsp;&nbsp;&nbsp;1 [<nop>[$provider][$name]=
+   * =header=: header string added if there was a provider in the list
+   * =footer=: footer string added if ...
+   * =separator=: separator string inserted between each provider found
+   * =exampleformat=: format strings for available examples
+   * =exampleheader=
+   * =examplefooter=
+   * =exampleseparator=
+   * =include=: regular expression that the provider must match to be included in the output
+   * =exclude=: regular expression that the provider must _not_ match to be included in the output
+
+The format string may use the following variables
+
+   * =$name=: name of provider
+   * =$examples=: example string constructed from =example[format,header,footer,separator]=
+   * =$provider=: url address of the provider
+   * =$api=: api address for the oembed endpoint
+   * =$url=: list of patterns that an url must match to be processed by this provider
+
+To display all examples stored in the provider records use:
 
 <verbatim class="tml">
-%EMBED{"http://www.washingtonpost.com/investigations/us-intelligence-mining-data-from-nine-us-internet-companies-in-broad-secret-program/2013/06/06/3a0c0da8-cebf-11e2-8845-d970ccb04497_story.html"
-  template="article"
-  thumbnail_width="100"
+<form action="%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%">
+*Url*: 
+<input type="text" size="80" name="url" value="%URLPARAM{"url"}%" />
+<input type="submit" class="foswikiButton" value="Embed" />
+</form>
+
+%IF{"$'URLPARAM{url}'!=''"
+  then="$percntEMBED{\"%URLPARAM{"url"}%\"}$percnt"
+}%
+
+%OEMBED_PROVIDER{
+   format="   1 $name: $examples"
+   exampleformat="[[%SCRIPTURLPATH{"view"}%/%WEB%/%TOPIC%?url=$url][example]]"
 }%
 </verbatim>
 
-%EMBED{"http://www.washingtonpost.com/investigations/us-intelligence-mining-data-from-nine-us-internet-companies-in-broad-secret-program/2013/06/06/3a0c0da8-cebf-11e2-8845-d970ccb04497_story.html"
-  template="article"
-  thumbnail_width="100"
-}%
+
+---++ Examples
 
 ---+++ Youbtube
 <verbatim class="tml">
-%EMBED{"http://www.youtube.com/watch?v=O8e8Ttfz-pY" width="600"}%
+%EMBED{"https://www.youtube.com/watch?v=O8e8Ttfz-pY" width="600"}%
 </verbatim>
 
-%EMBED{"http://www.youtube.com/watch?v=O8e8Ttfz-pY" width="600"}%
+%EMBED{"https://www.youtube.com/watch?v=O8e8Ttfz-pY" width="600"}%
 
 ---+++ Soundcloud
 <verbatim class="tml">
-%EMBED{"http://soundcloud.com/safia-music/listen-to-soul-listen-to-blues" width="600"}%
+%EMBED{"https://soundcloud.com/safia-music/listen-to-soul-listen-to-blues" width="600"}%
 </verbatim>
 
-%EMBED{"http://soundcloud.com/safia-music/listen-to-soul-listen-to-blues" width="600"}%
+%EMBED{"https://soundcloud.com/safia-music/listen-to-soul-listen-to-blues" width="600"}%
 
 ---+++ Flickr
 <verbatim class="tml">
-%EMBED{"http://www.flickr.com/photos/onement/1239189689/" height="400"}%
+%EMBED{"https://www.flickr.com/photos/onement/1239189689/" height="400"}%
 </verbatim>
-%EMBED{"http://www.flickr.com/photos/onement/1239189689/" height="400"}%
-
-
----+++ More examples
-<verbatim class="tml">
-%EMBED{"http://www.jest.com/video/197394/paul-ryan-rap"}%
-%EMBED{"http://chirb.it/Jh25OE"}%
-%EMBED{"http://dotsub.com/view/10e3cb5e-96c7-4cfb-bcea-8ab11e04e090"}%
-%EMBED{"http://geo.hlipp.de/photo/20260"}%
-%EMBED{"http://instagram.com/p/Z-u2XxQJ7H/"}%
-%EMBED{"http://matt.wordpress.com/2011/07/14/clouds-over-new-york/"}%
-%EMBED{"http://pycon.blip.tv/file/2058801"}%
-%EMBED{"http://qik.com/video/50925"}%
-%EMBED{"http://revision3.com/diggnation/2008-04-17xsanned"}%
-%EMBED{"https://twitter.com/nuddlegg/status/330610557793210369"}%
-%EMBED{"https://www.circuitlab.com/circuit/e38756/555-timer-as-astable-multivibrator-oscillator/"}%
-%EMBED{"http://twitpic.com/cuisl3"}%
-%EMBED{"http://vimeo.com/7100569"}%
-%EMBED{"http://www.amazon.com/Myths-Innovation-Scott-Berkun/dp/0596527055/"}%
-%EMBED{"http://www.clikthrough.com/theater/video/45//en-US"}%
-%EMBED{"http://www.clipfish.de/special/boese-maedchen/video/3687388/boese-maedchen-ladys-first/"}%
-%EMBED{"http://www.collegehumor.com/video/3922232/prank-war-7-the-half-million-dollar-shot"}%
-%EMBED{"http://www.dailymotion.com/video/x5ioet_phoenix-mars-lander_tech"}%
-%EMBED{"http://www.geograph.org.gg/photo/773"}%
-%EMBED{"http://www.geograph.org.uk/photo/2928776"}%
-%EMBED{"http://www.hulu.com/watch/471667"}%
-%EMBED{"http://www.kinomap.com/kms-vzkpc7"}%
-%EMBED{"http://www.mixcloud.com/johndigweed/transitions-with-john-digweed-30th-may-2013/"}%
-%EMBED{"http://www.nfb.ca/film/blackfly/"}%
-%EMBED{"http://www.polleverywhere.com/multiple_choice_polls/LTIwNzM1NTczNTE"}%
-%EMBED{"http://www.quiz.biz/quizz-182015.html"}%
-%EMBED{"http://www.scribd.com/doc/17896323/Indian-Automobile-industryPEST" width="600"}%
-%EMBED{"http://www.slideshare.net/haraldf/business-quotes-for-2011"}%
-%EMBED{"http://www.ted.com/talks/hendrik_poinar_bring_back_the_woolly_mammoth.html"}%
-%EMBED{"http://www.viddler.com/v/1646c55"}%
-%EMBED{"http://www.screencast.com/t/jHhhu39t"}%
-%EMBED{"http://www.screenr.com/fTK"}%
-%EMBED{"http://goo.gl/maps/22OR8"}%
-%EMBED{"https://foursquare.com/v/vapiano/4b212bc4f964a520ac3724e3"}%
-%EMBED{"http://feigiap.deviantart.com/art/Shop-380055652"}%
-%EMBED{"https://speakerdeck.com/reneeb_perl/the-renaissance-of-perl"}%
-%EMBED{"http://www.videojug.com/film/how-to-tie-a-knot-braid"}%
-%EMBED{"http://www.justin.tv/deepellumonair"}%
-%EMBED{"http://mobypicture.com/user/Henk_Voermans/view/15880044"
-  format="<a href='$url'><img src='$url' width='$width' /></a> %BR% by <a href='$author_url'>$author_name</a>"
-  width="500"
-}%
-%EMBED{"http://www.23hq.com/brinjal/photo/13305970" width="500"}%
-%EMBED{"http://official.fm/playlists/cxBp?from=homepage&track_id=g8x7"}%
-%EMBED{"http://videos.sapo.pt/dNbiosGa9YZHfLrhkA88"}%
-%EMBED{"http://crowdranking.com/crowdrankings/t446g0--best-movies-2013"}%
-%EMBED{"https://cacoo.com/diagrams/m9uZtizE5I2GkFR6"}%
-%EMBED{"http://huffduffer.com/jxpx777/125342"}%
-%EMBED{"http://my.opera.com/cstrep/albums/showpic.dml?album=504322&picture=6964560"}%
-%EMBED{"http://www.funnyordie.com/videos/2555a0702b/clint-eastwod-s-chair-auditions"}%
-%EMBED{"http://animoto.com/play/JzwsBn5FRVxS0qoqcBP5zA"}%
-%EMBED{"http://www.rdio.com/artist/The_Black_Keys/album/Brothers/"}%
-%EMBED{"http://coub.com/view/agqbu"}%
-%EMBED{"http://www.kickstarter.com/projects/1115015686/help-support-the-kiggins-theatre-to-go-digital"}%
-%EMBED{"https://sketchfab.com/show/b7LzIm8JrnPw4GBDOMBNGYc39qM"}%
-</verbatim>
+%EMBED{"https://www.flickr.com/photos/onement/1239189689/" height="400"}%
 
 
 ---++ Installation Instructions
@@ -231,6 +361,12 @@ See the =oembed.tmpl= file on how to use them.
 %$DEPENDENCIES%
 
 ---++ Change History
+|  05 May 2022 | added a few more oembed providers |
+|  03 Mar 2021 | adedd microsoft stream provider |
+|  22 Jan 2020 | imported provider from https://github.com/iamcal/oembed; implemented %OEMBED_PROVIDER  | 
+|  13 Mar 2019 | document =quality= parameter when embeding youtube videos; \
+                 added =quality="auto"= to fetch the best thumbnail available; \
+                 added support for proxy |
 |  25 Sep 2017 | added =clearCache= REST interface for local cache maintenance |
 |  17 Nov 2016 | more providers; converted Web::oEmbed from Any::Moose to Moo |
 |  07 Oct 2015 | multiple providers went in & out |
@@ -250,7 +386,7 @@ See the =oembed.tmpl= file on how to use them.
 
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2013-2017 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2013-2022 Michael Daum"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%

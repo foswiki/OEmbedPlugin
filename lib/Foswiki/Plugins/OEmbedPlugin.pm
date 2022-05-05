@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013-2017 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2022 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -20,8 +20,8 @@ use warnings;
 
 use Foswiki::Func ();
 
-our $VERSION = '5.41';
-our $RELEASE = '25 Sep 2017';
+our $VERSION = '7.00';
+our $RELEASE = '05 May 2022';
 our $SHORTDESCRIPTION = 'Easy embedding of third party content';
 our $NO_PREFS_IN_TOPIC = 1;
 our $core;
@@ -32,18 +32,7 @@ sub initPlugin {
 
   Foswiki::Func::registerTagHandler('OEMBED', sub { return getCore()->EMBED(@_); });
   Foswiki::Func::registerTagHandler('EMBED', sub { return getCore()->EMBED(@_); });
-
-  Foswiki::Func::registerRESTHandler('purgeCache', sub { return getCore()->purgeCache(@_); },
-    authenticate => 0,
-    validate => 0,
-    http_allow => 'GET,POST',
-  );
-
-  Foswiki::Func::registerRESTHandler('clearCache', sub { return getCore()->clearCache(@_); },
-    authenticate => 0,
-    validate => 0,
-    http_allow => 'GET,POST',
-  );
+  Foswiki::Func::registerTagHandler('OEMBED_PROVIDER', sub { return getCore()->OEMBED_PROVIDER(@_); });
 
   Foswiki::Func::registerRESTHandler('provider', sub { return getCore()->provider(@_); },
     authenticate => 0,
