@@ -26,22 +26,55 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://abraia.me",
     url => ["https://store.abraia.me/*"],
   },
+  "ActBlue" => {
+    api => "https://secure.actblue.com/cf/oembed",
+    examples => ["https://secure.actblue.com/donate/actblue-1-embed"],
+    provider => "https://secure.actblue.com",
+    url => ["https://secure.actblue.com/donate/*"],
+  },
+  "Adilo" => {
+    api => "https://adilo.bigcommand.com/web/oembed",
+    examples => ["https://adilo.bigcommand.com/watch/7DmeLyjk"],
+    params => {format => "json"},
+    provider => "https://adilo.bigcommand.com",
+    url => ["https://adilo.bigcommand.com/watch/*"],
+  },
   "Adways" => {
     api => "http://play.adpaths.com/oembed/*",
     provider => "http://www.adways.com",
     url => ["http://play.adpaths.com/experience/*"],
   },
-  "AlphaAppNet" => {
-    api => "https://alpha-api.app.net/oembed",
-    examples => ["https://alpha.app.net/breakingnews/post/9153521"],
-    provider => "https://alpha.app.net/browse/posts/",
-    url => ["https://alpha.app.net/*/post/*", "https://photos.app.net/*/*",],
+  "afreecaTV" => {
+    api => "https://openapi.afreecatv.com/oembed/embedinfo",
+    examples => [
+      "https://vod.afreecatv.com/PLAYER/STATION/71021072",
+      "https://play.afreecatv.com/afstar1/237663862",
+    ],
+    provider => "https://www.afreecatv.com",
+    url => [
+      "https://v.afree.ca/ST/",
+      "https://vod.afreecatv.com/ST/",
+      "https://vod.afreecatv.com/PLAYER/STATION/",
+      "https://play.afreecatv.com/",
+    ],
+  },
+  "AltiumLLC" => {
+    api => "https://viewer.altium.com/shell/oembed",
+    examples => ["https://altium.com/viewer/vN8in6nli06imztWoTol4w=="],
+    provider => "https://altium.com",
+    url => ["https://altium.com/viewer/*"],
   },
   "Altru" => {
-    api => "https://api.altrulabs.com/social/oembed",
-    examples => ["https://app.altrulabs.com/talentbrand/feed?answer_id=2059"],
+    api => "https://api.altrulabs.com/api/v1/social/oembed",
+    examples => [
+      "https://app.altrulabs.com/talentbrand/feed?answer_id=2059",
+      "https://app.altrulabs.com/player/41329",
+    ],
     provider => "https://www.altrulabs.com",
-    url => ["https://app.altrulabs.com/*/*?answer_id=*"],
+    url => [
+      "https://app.altrulabs.com/*/*?answer_id=*",
+      "https://app.altrulabs.com/player/*",
+    ],
   },
   "amChartsLiveEditor" => {
     api => "https://live.amcharts.com/oembed",
@@ -52,6 +85,21 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "https://live.amcharts.com/",
     url => ["http://live.amcharts.com/*", "https://live.amcharts.com/*"],
+  },
+  "Amtraker" => {
+    api => "https://api.amtraker.com/v2/oembed",
+    examples => [
+      "https://amtraker.com/trains/9999",
+      "https://amtraker.com/trains/9999?d=1",
+      "https://amtraker.com/trains/9999?d=1",
+      "https://amtraker.com/trains/9999?d=1",
+    ],
+    params => {xml => "false"},
+    provider => "https://amtraker.com",
+    url => [
+      "https://amtraker.com/trains/*",
+      "https://beta.amtraker.com/trains/*",
+    ],
   },
   "Animatron" => {
     api => "https://animatron.com/oembed/json",
@@ -72,6 +120,12 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://animoto.com/",
     url => ["http://animoto.com/play/*"],
   },
+  "AnnieMusic" => {
+    api => "https://api.anniemusic.app/api/v1/oembed",
+    examples => ["https://anniemusic.app/t/XDSOYMAnVG"],
+    provider => "https://anniemusic.app",
+    url => ["https://anniemusic.app/t/*", "https://anniemusic.app/p/*"],
+  },
   "Apester" => {
     api => "https://display.apester.com/oembed",
     params => {iframe_preview => "true", preview => "true"},
@@ -79,6 +133,16 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     url => [
       "https://renderer.apester.com/v2/*?preview=true&iframe_preview=true",
     ],
+  },
+  "ArcGISStoryMaps" => {
+    api => "https://storymaps.arcgis.com/oembed",
+    examples => [
+      "https://storymaps.arcgis.com/stories/ffdd1f0589434e8c8cf0dddbb1edd364",
+      "https://storymaps.arcgis.com/stories/ffdd1f0589434e8c8cf0dddbb1edd364",
+    ],
+    params => {format => "json"},
+    provider => "https://storymaps.arcgis.com",
+    url => ["https://storymaps.arcgis.com/stories/*"],
   },
   "Archivos" => {
     api => "https://app.archivos.digital/oembed/",
@@ -91,12 +155,16 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     examples => [
       "https://audioboom.com/channels/4971939",
       "https://audioboom.com/channels/4971939",
+      "https://audioboom.com/channel/casefile-true-crime",
+      "https://audioboom.com/channel/casefile-true-crime",
       "https://audioboom.com/posts/7193185-stephen-merchant",
       "https://audioboom.com/posts/7193185-stephen-merchant",
     ],
     provider => "https://audioboom.com",
-    url =>
-        ["https://audioboom.com/channel/*", "https://audioboom.com/posts/*",],
+    url => [
+      "https://audioboom.com/channels/*", "https://audioboom.com/channel/*",
+      "https://audioboom.com/posts/*",
+    ],
   },
   "AudioClip" => {
     api => "https://audioclip.naver.com/oembed",
@@ -114,42 +182,42 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
   },
   "Audiomack" => {
-    api => "https://www.audiomack.com/oembed",
-    examples => ["https://www.audiomack.com/playlist/audiomack/just-chillin"],
+    api => "https://audiomack.com/oembed",
+    examples => ["https://audiomack.com/audiomack/playlist/just-chillin"],
     params => {format => "json"},
-    provider => "https://www.audiomack.com",
+    provider => "https://audiomack.com",
     url => [
-      "https://www.audiomack.com/song/*",
-      "https://www.audiomack.com/album/*",
-      "https://www.audiomack.com/playlist/*",
+      "https://audiomack.com/*/song/*",
+      "https://audiomack.com/*/album/*",
+      "https://audiomack.com/*/playlist/*",
     ],
   },
-  "AudioSnaps" => {
-    api => "http://audiosnaps.com/service/oembed",
-    examples =>
-        ["http://audiosnaps.com/k/d8wi/", "http://audiosnaps.com/k/d8wi/",],
-    params => {format => "json"},
-    provider => "http://audiosnaps.com",
-    url => ["http://audiosnaps.com/k/*"],
+  "Audiomeans" => {
+    api => "https://podcasts.audiomeans.fr/services/oembed",
+    examples => [
+      "https://podcasts.audiomeans.fr/player-v2/anti-brouillard-6340b48dedde/episodes/4e490cb9-41fe-48f2-9781-ee0354917c74?color=871f78",
+    ],
+    provider => "https://audiomeans.fr",
+    url => ["https://podcasts.audiomeans.fr/*"],
   },
   "Avocode" => {
     api => "https://stage-embed.avocode.com/api/oembed",
-    examples => [
-      "https://app.avocode.com/view/a851fc49602446be8c1ef6e5dc3845d8/33250729/comments/",
-    ],
-    params => {format => "json"},
     provider => "https://www.avocode.com/",
-    url => ["https://app.avocode.com/view/*/_/comments/"],
+    url => ["https://app.avocode.com/view/*"],
   },
   "Backtracks" => {
     api => "https://backtracks.fm/oembed",
     examples => [
       "https://backtracks.fm/ycombinator/ycombinator/e/4-elon-musk-on-how-to-build-the-future",
+      "https://backtracks.fm/discover/s/the-joe-rogan-experience/6b8581415e041967/e/1411-robert-downey-jr/77d2d79586e78c01?oref=btdatadir",
     ],
     params => {format => "json"},
     provider => "https://backtracks.fm",
     url => [
-      "https://backtracks.fm/*/*/e/*", "https://backtracks.fm/*",
+      "https://backtracks.fm/*/*/e/*",
+      "https://backtracks.fm/*/s/*/*",
+      "https://backtracks.fm/*/*/*/*/e/*/*",
+      "https://backtracks.fm/*",
       "http://backtracks.fm/*",
     ],
   },
@@ -176,11 +244,23 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
   },
   "Blogcast" => {
     api => "https://blogcast.host/oembed",
-    examples =>
-        ["https://blogcast.host/embed/1", "https://blogcast.host/embed/300",],
+    examples => [
+      "https://blogcast.host/embed/1", "https://blogcast.host/embed/300",
+    ],
     provider => "https://blogcast.host/",
-    url =>
-        ["https://blogcast.host/embed/*", "https://blogcast.host/embedly/*",],
+    url => [
+      "https://blogcast.host/embed/*", "https://blogcast.host/embedly/*",
+    ],
+  },
+  "Bookingmood" => {
+    api => "https://bookingmood.com/api/oembed",
+    examples => [
+      "https://www.bookingmood.com/embed/search/cb8ea5f0-c766-4dd4-913e-fa2ec0db4dee",
+      "https://www.bookingmood.com/embed/search/cb8ea5f0-c766-4dd4-913e-fa2ec0db4dee",
+    ],
+    params => {format => "json"},
+    provider => "https://www.bookingmood.com",
+    url => ["https://www.bookingmood.com/embed/*/*"],
   },
   "BoxOfficeBuz" => {
     api => "http://boxofficebuz.com/oembed",
@@ -198,6 +278,18 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "https://view.briovr.com/",
     url => ["https://view.briovr.com/api/v1/worlds/oembed/*"],
+  },
+  "Bumper" => {
+    api => "https://www.bumper.com/oembed/bumper",
+    examples => [
+      "https://www.bumper.com/marketplace-s/pr-286/indexhtml#/listing/222618920",
+    ],
+    params => {format => "json"},
+    provider => "http://www.bumper.com",
+    url => [
+      "https://www.bumper.com/oembed/bumper",
+      "https://www.bumper.com/oembed-s/bumper",
+    ],
   },
   "Buttondown" => {
     api => "https://buttondown.email/embed",
@@ -219,15 +311,23 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://cacoo.com",
     url => ["https://cacoo.com/diagrams/*"],
   },
-  "CarbonHealth" => {
-    api => "http://carbonhealth.com/oembed",
-    provider => "https://carbonhealth.com",
-    url => ["https://carbonhealth.com/practice/*"],
+  "Catapult" => {
+    api => "https://www.catapult.app/_hcms/api/video/oembed",
+    examples => [
+      "https://www-catapult-app.sandbox.hs-sites.com/video-page/540023202",
+      "https://www-catapult.app/video-page/53304333",
+    ],
+    provider => "https://www.catapult.app/",
+    url => [
+      "https://www-catapult-app.sandbox.hs-sites.com/video-page*",
+      "https://www-catapult.app/video-page*",
+    ],
   },
   "CatBoat" => {
     api => "http://img.catbo.at/oembed.json",
-    examples =>
-        ["http://img.catbo.at/3fb93c1b7891aedb18aa41fb325cbc92e82e58a1.jpg",],
+    examples => [
+      "http://img.catbo.at/3fb93c1b7891aedb18aa41fb325cbc92e82e58a1.jpg",
+    ],
     params => {format => "json"},
     provider => "http://img.catbo.at/",
     url => ["http://img.catbo.at/*"],
@@ -240,6 +340,22 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
     provider => "http://www.ceros.com/",
     url => ["http://view.ceros.com/*"],
+  },
+  "Chainflix" => {
+    api => "https://www.chainflix.net/video/oembed",
+    examples => [
+      "https://www.chainflix.net/video/?contentId=1310",
+      "https://www.chainflix.net/video/?contentId=1310",
+      "https://www.chainflix.net/video/?contentId=1310",
+    ],
+    params => {format => "json"},
+    provider => "https://chainflix.net",
+    url => [
+      "https://chainflix.net/video/*",
+      "https://chainflix.net/video/embed/*",
+      "https://*.chainflix.net/video/*",
+      "https://*.chainflix.net/video/embed/*",
+    ],
   },
   "ChartBlocks" => {
     api => "http://embed.chartblocks.com/1.0/oembed",
@@ -257,6 +373,13 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.chirbit.com/",
     url => ["http://chirb.it/*"],
   },
+  "CHROCO" => {
+    api => "https://chroco.ooo/embed",
+    examples =>
+        ["https://chroco.ooo/story/ee261faa-2127-4a30-bd12-8656bb0786f0",],
+    provider => "https://chroco.ooo/",
+    url => ["https://chroco.ooo/mypage/*", "https://chroco.ooo/story/*"],
+  },
   "CircuitLab" => {
     api => "https://www.circuitlab.com/circuit/oembed/",
     examples => [
@@ -268,8 +391,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
   },
   "Clipland" => {
     api => "https://www.clipland.com/api/oembed",
-    examples =>
-        ["http://www.clipland.com/v/1010", "http://www.clipland.com/v/1010",],
+    examples => [
+      "http://www.clipland.com/v/1010", "http://www.clipland.com/v/1010",
+    ],
     params => {format => "json"},
     provider => "http://www.clipland.com/",
     url => ["http://www.clipland.com/v/*", "https://www.clipland.com/v/*"],
@@ -281,6 +405,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://clyp.it/",
     url => ["http://clyp.it/*", "http://clyp.it/playlist/*"],
   },
+  "CoCoCorp" => {
+    api => "https://app.ilovecoco.video/api/oembed.{format}",
+    examples => [
+      "https://app.ilovecoco.video/m4p4YNGyKR9fmNpgwozX/embed",
+      "https://app.ilovecoco.video/m4p4YNGyKR9fmNpgwozX/embed",
+    ],
+    provider => "https://ilovecoco.video",
+    url => ["https://app.ilovecoco.video/*/embed"],
+  },
   "CodeHS" => {
     api => "https://codehs.com/api/sharedprogram/*/oembed/",
     examples =>
@@ -288,8 +421,8 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.codehs.com",
     url => ["https://codehs.com/editor/share_abacus/*"],
   },
-  "Codepen" => {
-    api => "http://codepen.io/api/oembed",
+  "CodePen" => {
+    api => "https://codepen.io/api/oembed",
     examples => ["https://codepen.io/gingerdude/pen/JXwgdK"],
     params => {format => "json"},
     provider => "https://codepen.io",
@@ -341,23 +474,44 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://crowdranking.com",
     url => ["http://crowdranking.com/*/*"],
   },
-  "CyranoSystems" => {
-    api => "https://staging.cyranosystems.com/oembed",
-    examples => [
-      "https://staging.cyranosystems.com/msg/#/guestPlayProgram/000181d4-2b11-8702-0035-45f0449eb025",
-    ],
-    provider => "http://www.cyranosystems.com/",
-    url => [
-      "https://staging.cyranosystems.com/msg/*",
-      "https://app.cyranosystems.com/msg/*",
-    ],
-  },
-  "DailyMile" => {
-    api => "http://api.dailymile.com/oembed?format=json",
-    examples => ["http://www.dailymile.com/people/EddieJ3/entries/24776213"],
+  "Crumb.sh" => {
+    api => "https://crumb.sh/oembed/",
+    examples => ["https://crumb.sh/QdrfCWZeXKu"],
     params => {format => "json"},
-    provider => "http://www.dailymile.com",
-    url => ["http://www.dailymile.com/people/*/entries/*"],
+    provider => "https://crumb.sh",
+    url => ["https://crumb.sh/*"],
+  },
+  "CueupDJBooking" => {
+    api => "https://gql.cueup.io/oembed",
+    examples => [
+      "https://cueup.io/user/spinso/sounds/111_housie-bousie",
+      "https://cueup.io/user/spinso/sounds/soundcloud-215863477_house-mixtape",
+    ],
+    params => {format => "json"},
+    provider => "https://cueup.io",
+    url => ["https://cueup.io/user/*/sounds/*"],
+  },
+  "Curated" => {
+    api => "https://api.curated.co/oembed",
+    examples => ["https://optinweekly.curated.co"],
+    provider => "https://curated.co/",
+    url => ["https://*.curated.co/*"],
+  },
+  "CustomerDB" => {
+    api => "https://app.customerdb.com/embed",
+    examples => ["https://app.customerdb.com/share/e7f70c84a1f64557"],
+    provider => "http://customerdb.com/",
+    url => ["https://app.customerdb.com/share/*"],
+  },
+  "dadan" => {
+    api => "https://app.dadan.io/api/video/oembed",
+    examples => [
+      "https://app.dadan.io/video/share/N8Hcbu0F1Du3ugmI",
+      "https://app.dadan.io/video/share/N8Hcbu0F1Du3ugmI",
+    ],
+    params => {format => "json"},
+    provider => "https://www.dadan.io",
+    url => ["https://app.dadan.io/*", "https://stage.dadan.io/*"],
   },
   "Dailymotion" => {
     api => "https://www.dailymotion.com/services/oembed",
@@ -366,6 +520,22 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "https://www.dailymotion.com",
     url => ["https://www.dailymotion.com/video/*"],
+  },
+  "DALEXNI" => {
+    api => "https://dalexni.com/oembed/",
+    examples => [
+      "https://dalexni.com/i/costa-rica.DT0",
+      "https://dalexni.com/i/costa-rica.DT0",
+    ],
+    params => {format => "json"},
+    provider => "https://dalexni.com/",
+    url => ["https://dalexni.com/i/*"],
+  },
+  "Datawrapper" => {
+    api => "https://api.datawrapper.de/v3/oembed/",
+    examples => ["https://datawrapper.dwcdn.net/RnWgL/9/"],
+    provider => "http://www.datawrapper.de",
+    url => ["https://datawrapper.dwcdn.net/*"],
   },
   "DeseretNews" => {
     api => "https://embed.deseret.com/",
@@ -389,7 +559,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
   },
   "Didacte" => {
-    api => "https://*.didacte.com/cards/oembed'",
+    api => "https://*.didacte.com/cards/oembed",
     examples => ["https://finchp.didacte.com/a/course/363?locale=fr"],
     provider => "https://www.didacte.com/",
     url => ["https://*.didacte.com/a/course/*"],
@@ -408,13 +578,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://www.ultimedia.com/default/index/videogeneric/id/*",
     ],
   },
-  "Dipity" => {
-    api => "http://www.dipity.com/oembed/timeline/",
-    examples => ["http://www.dipity.com/ragutier/Historia_de_la_Web/"],
-    params => {format => "json"},
-    provider => "http://www.dipity.com",
-    url => ["http://www.dipity.com/*/*/"],
-  },
   "DocDroid" => {
     api => "https://www.docdroid.net/api/oembed",
     examples =>
@@ -423,6 +586,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     url => [
       "https://*.docdroid.net/*", "http://*.docdroid.net/*",
       "https://docdro.id/*", "http://docdro.id/*",
+      "https://*.docdroid.com/*", "http://*.docdroid.com/*",
     ],
   },
   "Dotsub" => {
@@ -443,15 +607,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://d.tube/",
     url => ["https://d.tube/v/*"],
   },
-  "edocr" => {
-    api => "http://edocr.com/api/oembed",
-    examples => [
-      "http://www.edocr.com/doc/144677/capillary-technologies-corporate-brochure",
-    ],
-    params => {format => "json"},
-    provider => "http://www.edocr.com",
-    url => ["http://edocr.com/docs/*"],
-  },
   "eduMedia" => {
     api => "https://www.edumedia-sciences.com/oembed.json",
     examples => [
@@ -471,13 +626,11 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://egliseinfo.catholique.fr/",
     url => ["http://egliseinfo.catholique.fr/*"],
   },
-  "EmbedArticles" => {
-    api => "http://embedarticles.com/oembed/",
-    examples => [
-      "http://embedarticles.com/article/101887/yemi~alade~ft.~selebobo~~na~gode/",
-    ],
-    provider => "http://embedarticles.com/",
-    url => ["http://embedarticles.com/*"],
+  "Embedery" => {
+    api => "https://embedery.com/api/oembed",
+    examples => ["https://embedery.com/widget/SzjWkZdPCPYb9iQ0FfwA"],
+    provider => "https://embedery.com/",
+    url => ["https://embedery.com/widget/*"],
   },
   "Embedly" => {
     api => "http://api.embed.ly/1/oembed",
@@ -485,12 +638,53 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://api.embed.ly/",
     url => "https://api.embed.ly/*",
   },
+  "EnystreMusic" => {
+    api => "https://music.enystre.com/oembed",
+    examples => [
+      "https://music.enystre.com/lyrics/164586",
+      "https://music.enystre.com/lyrics/164586",
+      "https://music.enystre.com/lyrics/164586",
+      "https://music.enystre.com/lyrics/164586",
+    ],
+    params => {format => "json"},
+    provider => "https://music.enystre.com",
+    url => ["https://music.enystre.com/lyrics/*"],
+  },
   "Ethfiddle" => {
     api => "https://ethfiddle.com/services/oembed/",
     examples => ["https://ethfiddle.com/Y8Iy49zDJ0"],
     params => {format => "json"},
     provider => "https://www.ethfiddle.com/",
     url => ["https://ethfiddle.com/*"],
+  },
+  "EventLive" => {
+    api => "https://evt.live/api/oembed",
+    examples => ["https://evt.live/mail8099/wedding-sample"],
+    params => {format => "json"},
+    provider => "https://eventlive.pro",
+    url => [
+      "https://evt.live/*", "https://evt.live/*/*",
+      "https://live.eventlive.pro/*", "https://live.eventlive.pro/*/*",
+    ],
+  },
+  "everviz" => {
+    api => "https://api.everviz.com/oembed",
+    examples => ["https://app.everviz.com/embed/R8jhGkYT5"],
+    provider => "https://everviz.com",
+    url => [
+      "https://app.everviz.com/embed/*", "http://app.everviz.com/embed/*",
+    ],
+  },
+  "Ex.Co" => {
+    api => "https://oembed.ex.co/item",
+    examples => [
+      "https://app.ex.co/stories/item/8fb2343f-fa5d-48d4-8723-f8b5d51cc1a9",
+      "https://app.ex.co/stories/paolagarcia10/remembering-september-11th-flash-back-to-images-we-will-never-forget",
+      "https://www.playbuzz.com/paolagarcia10/remembering-september-11th-flash-back-to-images-we-will-never-forget",
+    ],
+    params => {id => "8fb2343f-fa5d-48d4-8723-f8b5d51cc1a9"},
+    provider => "https://ex.co",
+    url => ["https://app.ex.co/stories/*", "https://www.playbuzz.com/*"],
   },
   "Eyrie" => {
     api => "https://eyrie.io/v1/oembed",
@@ -500,21 +694,20 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     url => ["https://eyrie.io/board/*", "https://eyrie.io/sparkfun/*"],
   },
   "Facebook" => {
-    api => "https://www.facebook.com/plugins/post/oembed.json",
+    api => "https://graph.facebook.com/v10.0/oembed_post",
+    examples => ["https://www.facebook.com/CDC"],
+    params => {access_token => 96481},
     provider => "https://www.facebook.com/",
     url => [
       "https://www.facebook.com/*/posts/*",
-      "https://www.facebook.com/photos/*",
-      "https://www.facebook.com/*/photos/*",
-      "https://www.facebook.com/photo.php*",
-      "https://www.facebook.com/photo.php",
       "https://www.facebook.com/*/activity/*",
-      "https://www.facebook.com/permalink.php",
+      "https://www.facebook.com/*/photos/*",
+      "https://www.facebook.com/photo.php?fbid=*",
+      "https://www.facebook.com/photos/*",
+      "https://www.facebook.com/permalink.php?story_fbid=*",
       "https://www.facebook.com/media/set?set=*",
       "https://www.facebook.com/questions/*",
       "https://www.facebook.com/notes/*/*/*",
-      "https://www.facebook.com/watch/*",
-      "https://www.facebook.com/*/videos/*",
     ],
   },
   "Fader" => {
@@ -542,6 +735,18 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://faithlifetv.com/media/resource/*/*",
     ],
   },
+  "Firework" => {
+    api => "https://www.fireworktv.com/oembed",
+    examples => [
+      "http://www.fireworktv.com/embed/LoA05R/v/vr2Oee",
+      "http://www.fireworktv.com/embed/LoA05R/v/vr2Oee",
+    ],
+    params => {format => "json"},
+    provider => "https://fireworktv.com/",
+    url => [
+      "https://*.fireworktv.com/*", "https://*.fireworktv.com/embed/*/v/*",
+    ],
+  },
   "FITE" => {
     api => "https://www.fite.tv/oembed",
     examples => ["https://www.fite.tv/watch/fite-tv-test-stream/2kmfd/"],
@@ -562,6 +767,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     url => [
       "http://*.flickr.com/photos/*", "http://flic.kr/p/*",
       "https://*.flickr.com/photos/*", "https://flic.kr/p/*",
+      "https://*.*.flickr.com/*/*", "http://*.*.flickr.com/*/*",
     ],
   },
   "Flourish" => {
@@ -572,15 +778,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://public.flourish.studio/visualisation/*",
       "https://public.flourish.studio/story/*",
     ],
-  },
-  "Fontself" => {
-    api => "https://oembed.fontself.com/",
-    examples => [
-      "https://catapult.fontself.com/MEdLOEq/gilbert-color-bold-preview4",
-      "https://catapult.fontself.com/gj8eJaq/welcome-regular",
-    ],
-    provider => "https://www.fontself.com",
-    url => ["https://catapult.fontself.com/*"],
   },
   "FOXSPORTSAustralia" => {
     api => "https://fiso.foxsports.com.au/oembed",
@@ -600,13 +797,12 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://framebuzz.com/",
     url => ["http://framebuzz.com/v/*", "https://framebuzz.com/v/*"],
   },
-  "FunnyOrDie" => {
-    api => "http://www.funnyordie.com/oembed.{format}",
-    examples => [
-      "http://www.funnyordie.com/videos/a7311134ac/patton-oswalt-in-heavy-metal",
-    ],
-    provider => "http://www.funnyordie.com/",
-    url => ["http://www.funnyordie.com/videos/*"],
+  "Framer" => {
+    api => "https://api.framer.com/web/oembed",
+    examples =>
+        ["https://framer.com/share/Music-Player--s0uS6VxvZ30W2IabDqOC",],
+    provider => "https://www.framer.com",
+    url => ["https://framer.com/share/*", "https://framer.com/embed/*"],
   },
   "GeographBritainandIreland" => {
     api => "http://api.geograph.org.uk/api/oembed",
@@ -682,7 +878,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     examples => ["https://giphy.com/gifs/cant-hardly-wait-kW8mnYSNkUYKc"],
     provider => "https://giphy.com",
     url => [
-      "https://giphy.com/gifs/*", "http://gph.is/*",
+      "https://giphy.com/gifs/*",
+      "https://giphy.com/clips/*",
+      "http://gph.is/*",
       "https://media.giphy.com/media/*/giphy.gif",
     ],
   },
@@ -691,6 +889,32 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     examples => ["https://gloria.tv/video/FRqEWoz7GfGt1pfhD4krcgyqC"],
     provider => "https://gloria.tv/",
     url => "https://gloria.tv/*",
+  },
+  "GMetri" => {
+    api => "https://embed.gmetri.com/oembed/",
+    examples => [
+      "https://game.gmetri.com/safehands_v2&format=json",
+      "https://view.gmetri.com/v5/ijafwv/raji_covid_game",
+    ],
+    provider => "https://www.gmetri.com/",
+    url => ["https://view.gmetri.com/*", "https://*.gmetri.com/*"],
+  },
+  "Gong" => {
+    api => "https://app.gong.io/oembed",
+    examples => ["https://app.gong.io:8080/call?id=1111111111111111111"],
+    provider => "https://www.gong.io/",
+    url => ["https://app.gong.io/call?id=*"],
+  },
+  "Grain" => {
+    api => "https://api.grain.com/_/api/oembed",
+    examples => [
+      "https://grain.com/share/highlight/tZUKIxcZAPaqa0Gzkgw1glKRfBPjcVo5",
+    ],
+    provider => "https://grain.com",
+    url => [
+      "https://grain.co/highlight/*", "https://grain.co/share/*",
+      "https://grain.com/share/*",
+    ],
   },
   "GTChannel" => {
     api => "https://api.luminery.com/oembed",
@@ -704,8 +928,13 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://gyazo.com",
     url => ["https://gyazo.com/*"],
   },
+  "HASH" => {
+    api => "https://api.hash.ai/oembed",
+    provider => "https://hash.ai",
+    url => ["https://core.hash.ai/\@*"],
+  },
   "hearthis.at" => {
-    api => "https://hearthis.at/oembed/",
+    api => "https://hearthis.at/oembed/?format=json",
     examples => [
       "https://hearthis.at/gdsfm/20180922-motherland-soundsystem-im-sender/",
       "https://hearthis.at/gdsfm/20180922-motherland-soundsystem-im-sender/",
@@ -713,6 +942,22 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "https://hearthis.at/",
     url => ["https://hearthis.at/*/*/", "https://hearthis.at/*/set/*/"],
+  },
+  "hihaho" => {
+    api => "https://player.hihaho.com/services/oembed",
+    examples =>
+        ["https://player.hihaho.com/448f6b34-7c12-48f5-952f-23316f93ec5c",],
+    params => {format => "json"},
+    provider => "https://www.hihaho.com",
+    url => ["https://player.hihaho.com/*"],
+  },
+  "HippoVideo" => {
+    api => "https://www.hippovideo.io/services/oembed",
+    examples =>
+        ["https://www.hippovideo.io/video/play/jzzYRcktQ6JP8xP_49jaaw",],
+    params => {format => "json"},
+    provider => "https://hippovideo.io",
+    url => ["http://*.hippovideo.io/*", "https://*.hippovideo.io/*"],
   },
   "Homey" => {
     api => "https://homey.app/api/oembed/flow",
@@ -735,6 +980,12 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.hulu.com/",
     url => ["http://www.hulu.com/watch/*"],
   },
+  "Idomoo" => {
+    api => "https://oembed.idomoo.com/oembed",
+    examples => ["http://liv.idomoo.com/1234/0000/abcdef.mp4"],
+    provider => "https://idomoo.com/",
+    url => ["https://*.idomoo.com/*"],
+  },
   "iFixit" => {
     api => "http://www.ifixit.com/Embed",
     examples => ["http://www.ifixit.com/Teardown/iPhone-4-Teardown/3130/1"],
@@ -747,6 +998,24 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     examples => ["https://ifttt.com/recipes/107745"],
     provider => "http://www.ifttt.com/",
     url => ["http://ifttt.com/recipes/*"],
+  },
+  "iHeartRadio" => {
+    api => "https://www.iheart.com/oembed",
+    examples => [
+      "https://www.iheart.com/podcast/105-stuff-you-should-know-26940277/",
+      "https://www.iheart.com/podcast/105-stuff-you-should-know-26940277/",
+      "https://www.iheart.com/podcast/105-stuff-you-should-know-26940277/episode/short-stuff-why-does-time-speed-54953593/",
+      "https://www.iheart.com/podcast/105-stuff-you-should-know-26940277/episode/short-stuff-why-does-time-speed-54953593/",
+    ],
+    params => {format => "json"},
+    provider => "https://www.iheart.com",
+    url => ["https://www.iheart.com/podcast/*/*"],
+  },
+  "Incredible" => {
+    api => "https://oembed.incredible.dev/oembed",
+    examples => ["https://incredible.dev/watch/md-to-video"],
+    provider => "https://incredible.dev",
+    url => ["https://incredible.dev/watch/*"],
   },
   "Indaco" => {
     api => "https://player.indacolive.com/services/oembed",
@@ -802,8 +1071,8 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     url => ["http://*.inphood.com/*"],
   },
   "Instagram" => {
-    api => "https://api.instagram.com/oembed",
-    examples => ["http://instagram.com/p/V8UMy0LjpX/"],
+    api => "https://graph.facebook.com/v10.0/instagram_oembed",
+    examples => ["https://instagram.com/p/V8UMy0LjpX/"],
     provider => "https://instagram.com",
     url => [
       "http://instagram.com/*/p/*,", "http://www.instagram.com/*/p/*,",
@@ -816,13 +1085,20 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "http://www.instagram.com/tv/*", "http://www.instagr.am/tv/*",
       "https://instagram.com/tv/*", "https://instagr.am/tv/*",
       "https://www.instagram.com/tv/*", "https://www.instagr.am/tv/*",
+      "http://www.instagram.com/reel/*", "https://www.instagram.com/reel/*",
+      "http://instagram.com/reel/*", "https://instagram.com/reel/*",
+      "http://instagr.am/reel/*", "https://instagr.am/reel/*",
     ],
   },
-  "iSnareArticles" => {
-    api => "https://www.isnare.com/oembed/",
-    examples => ["http://www.isnare.com/?aid=1897753&ca=Marketing"],
-    provider => "https://www.isnare.com/",
-    url => ["https://www.isnare.com/*"],
+  "InsticatorInc" => {
+    api => "https://www.insticator.com/oembed",
+    examples => [
+      "https://ppa.insticator.com/embed-unit/b4a63625-f223-4d97-9385-a34f734c98dc",
+      "https://ppa.insticator.com/embed-unit/6b5eac07-18e8-4ecb-90e1-a76091b56d10",
+    ],
+    params => {format => "json"},
+    provider => "https://www.insticator.com/",
+    url => ["https://ppa.insticator.com/embed-unit/*"],
   },
   "Issuu" => {
     api => "https://issuu.com/oembed",
@@ -831,26 +1107,18 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://issuu.com/",
     url => ["https://issuu.com/*/docs/*"],
   },
-  "ivlismusic" => {
-    api => "https://music.ivlis.kr/oembed",
-    examples => [
-      "https://music.ivlis.kr/?artist=Justin Bieber&track=Sorry",
-      "https://music.ivlis.kr/?artist=Justin Bieber&track=Sorry",
-    ],
-    params => {format => "json"},
-    provider => "https://music.ivlis.kr/",
-    url => "https://music.ivlis.kr/*",
-  },
   "Jovian" => {
     api => "https://api.jovian.ai/oembed.json",
     examples => [
       "https://jovian.ml/aakashns/movielens-fastai",
       "https://jovian.ml/aakashns/01-pytorch-basics/v/7",
+      "https://jovian.ai/aakashns/01-pytorch-basics/v/7",
     ],
-    provider => "https://jovian.ml/",
+    provider => "https://jovian.ai/",
     url => [
       "https://jovian.ml/*", "https://jovian.ml/viewer*",
-      "https://*.jovian.ml/*",
+      "https://*.jovian.ml/*", "https://jovian.ai/*",
+      "https://jovian.ai/viewer*", "https://*.jovian.ai/*",
     ],
   },
   "KakaoTv" => {
@@ -863,8 +1131,10 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://tv.kakao.com/",
     url => [
       "https://tv.kakao.com/channel/*/cliplink/*",
+      "https://tv.kakao.com/m/channel/*/cliplink/*",
       "https://tv.kakao.com/channel/v/*",
       "https://tv.kakao.com/channel/*/livelink/*",
+      "https://tv.kakao.com/m/channel/*/livelink/*",
       "https://tv.kakao.com/channel/l/*",
     ],
   },
@@ -919,13 +1189,36 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.kitchenbowl.com",
     url => ["http://www.kitchenbowl.com/recipe/*"],
   },
+  "kmdr" => {
+    api => "https://api.kmdr.sh/services/oembed",
+    examples => [
+      "https://app.kmdr.sh/history/7f3df902-129d-4af0-bc20-b0f0bc5869dd",
+    ],
+    params => {format => "json"},
+    provider => "https://kmdr.sh",
+    url => ["https://app.kmdr.sh/h/*", "https://app.kmdr.sh/history/*"],
+  },
   "Knacki" => {
     api => "https://jdr.knacki.info/oembed",
     examples => ["https://jdr.knacki.info/meuh/desole"],
     params => {format => "json"},
     provider => "http://jdr.knacki.info",
-    url =>
-        ["http://jdr.knacki.info/meuh/*", "https://jdr.knacki.info/meuh/*",],
+    url => [
+      "http://jdr.knacki.info/meuh/*", "https://jdr.knacki.info/meuh/*",
+    ],
+  },
+  "KnowledgePad" => {
+    api => "https://api.spoonacular.com/knowledge/oembed",
+    provider => "https://knowledgepad.co/",
+    url => ["https://knowledgepad.co/#/knowledge/*"],
+  },
+  "Kooapp" => {
+    api => "https://embed-stage.kooapp.com/services/oembed",
+    examples => [
+      "https://www.kooapp.com/koo/Dev_Fadnavis/5b9dded4-02ce-47af-a9fc-6ab8272f67d8",
+    ],
+    provider => "https://kooapp.com",
+    url => ["https://*.kooapp.com/koo/*", "http://*.kooapp.com/koo/*"],
   },
   "LearningApps.org" => {
     api => "http://learningapps.org/oembed.php",
@@ -933,6 +1226,16 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "http://learningapps.org/",
     url => ["http://learningapps.org/*"],
+  },
+  "LeMans.Pod" => {
+    api => "https://umotion-test.univ-lemans.fr/oembed",
+    examples => [
+      "https://umotion-test.univ-lemans.fr/video/0001-test-video-1/",
+      "https://umotion-test.univ-lemans.fr/video/0001-test-video-1/",
+    ],
+    params => {format => "json"},
+    provider => "https://umotion-test.univ-lemans.fr/",
+    url => ["https://umotion-test.univ-lemans.fr/video/*"],
   },
   "Lille.Pod" => {
     api => "https://pod.univ-lille.fr/oembed",
@@ -960,12 +1263,25 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://livestream.com/*/*/videos/*",
     ],
   },
+  "LottieFiles" => {
+    api => "https://embed.lottiefiles.com/oembed",
+    examples => ["https://lottiefiles.com/860-maldives-flag"],
+    provider => "https://lottiefiles.com/",
+    url => ["https://lottiefiles.com/*", "https://*.lottiefiles.com/*"],
+  },
   "Ludus" => {
     api => "https://app.ludus.one/oembed",
     examples =>
         ["https://app.ludus.one/fd01598e-5ed7-4edb-8d0e-cf75a36e0a07"],
     provider => "https://ludus.one",
     url => ["https://app.ludus.one/*"],
+  },
+  "Lumiere" => {
+    api => "https://admin.lumiere.is/api/services/oembed",
+    examples => ["https://p.lumiere.is/v/TQ41w_jVk2"],
+    params => {format => "json"},
+    provider => "https://latd.com",
+    url => ["https://*.lumiere.is/v/*"],
   },
   "MathEmbed" => {
     api => "http://mathembed.com/oembed",
@@ -989,6 +1305,23 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://me.me/",
     url => ["https://me.me/i/*"],
   },
+  "MediaLab" => {
+    api => "https://*.medialab.(co|app)/api/oembed/",
+    examples => [
+      "https://demo.medialab.co/share/watch/veE0Y/7274437b1142fb4a64c80fac2ad895195339665397b26e17a769e2faad27c13c/",
+      "https://demo.medialab.co/share/social/veE0Y/7274437b1142fb4a64c80fac2ad895195339665397b26e17a769e2faad27c13c/medialab_1080.mp4.html",
+    ],
+    params => {format => "json"},
+    provider => "https://www.medialab.co/",
+    url => [
+      "https://*.medialab.app/share/watch/*",
+      "https://*.medialab.co/share/watch/*",
+      "https://*.medialab.app/share/social/*",
+      "https://*.medialab.co/share/social/*",
+      "https://*.medialab.app/share/embed/*",
+      "https://*.medialab.co/share/embed/*",
+    ],
+  },
   "MedienarchivderK\xFCnste-Z\xFCrcherHochschulederK\xFCnste" => {
     api => "https://medienarchiv.zhdk.ch/oembed.{format}",
     examples => [
@@ -998,23 +1331,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://medienarchiv.zhdk.ch/",
     url => ["https://medienarchiv.zhdk.ch/entries/*"],
   },
-  "Meetup" => {
-    api => "https://api.meetup.com/oembed",
-    examples => ["http://www.meetup.com/PHPColMeetup/photos/"],
-    params => {format => "json"},
-    provider => "http://www.meetup.com",
-    url => [
-      "http://meetup.com/*", "https://www.meetup.com/*",
-      "https://meetup.com/*", "http://meetu.ps/*",
-    ],
-  },
-  'MicrosoftStream' => {
-    'api' => 'https://web.microsoftstream.com/oembed',
-    'url' => [
-      'https://web.microsoftstream.com/video/*',
-      'https://web.microsoftstream.com/chanel/*'
-    ]
-  },
   "MermaidInk" => {
     api => "https://mermaid.ink/services/oembed",
     examples => [
@@ -1023,11 +1339,31 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://mermaid.ink",
     url => ["https://mermaid.ink/img/*", "https://mermaid.ink/svg/*"],
   },
-  "Microlink" => {
-    api => "https://api.microlink.io",
-    examples => ["http://www.youtube.com/watch?v=B-m6JDYRFvk"],
-    provider => "http://api.microlink.io",
-    url => "https://api.microlink.io/*",
+  "MicrosoftStream" => {
+    api => "https://web.microsoftstream.com/oembed",
+    examples => [
+      "https://web.microsoftstream.com/video/f6df81b2-9438-4154-b32c-c023ebb2a4e3",
+    ],
+    params => {preload => "none"},
+    provider => "https://stream.microsoft.com",
+    url => [
+      "https://*.microsoftstream.com/video/*",
+      "https://*.microsoftstream.com/channel/*",
+    ],
+  },
+  "Minerva" => {
+    api => "https://oembed.minervaknows.com",
+    examples => [
+      "https://app.minervaknows.com/recipes/1d44cafd-946c-4607-b571-26220fd437ee/follow",
+    ],
+    provider => "https://www.minervaknows.com",
+    url => [
+      "https://www.minervaknows.com/featured-recipes/*",
+      "https://www.minervaknows.com/themes/*",
+      "https://www.minervaknows.com/themes/*/recipes/*",
+      "https://app.minervaknows.com/recipes/*",
+      "https://app.minervaknows.com/recipes/*/follow",
+    ],
   },
   "MixCloud" => {
     api => "https://www.mixcloud.com/oembed/",
@@ -1044,28 +1380,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "http://www.mobypicture.com",
     url => ["http://www.mobypicture.com/user/*/view/*", "http://moby.to/*",],
-  },
-  "Modelo" => {
-    api => "https://portal.modelo.io/oembed",
-    examples => [
-      "https://beta.modelo.io/embedded/CM89QBlZtp?viewport=false&autoplay=false",
-      "https://beta.modelo.io/embedded/PB4PgLTHJq?viewport=false&autoplay=false",
-    ],
-    params => {
-      authorName => "Tian Deng",
-      modelName =>
-          "JASPER ARCHITECTS - 161012_LISBOA_TODO_CON TERRENO_67_unix",
-    },
-    provider => "http://modelo.io/",
-    url => ["https://beta.modelo.io/embedded/*"],
-  },
-  "MorphCast" => {
-    api => "https://m-roll.morphcast.com/service/oembed",
-    examples => [
-      "https://m-roll.morphcast.com/mroll/?cameraon=true&hidecontrols=true&m=honda_2#/q=",
-    ],
-    provider => "https://www.morphcast.com",
-    url => ["https://m-roll.morphcast.com/mroll/*"],
   },
   "MusicBoxManiacs" => {
     api => "https://musicboxmaniacs.com/embed/",
@@ -1139,12 +1453,68 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.nfb.ca/",
     url => ["http://*.nfb.ca/film/*"],
   },
+  "NFTNDX.IO" => {
+    api => "https://www.nftndx.io/oembed",
+    examples => [
+      "https://nftndx.io/token/0x2A46f2fFD99e19a89476E2f62270e0a35bBf0756-40913",
+      "https://nftndx.io/token/0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7-19954",
+      "https://nftndx.io/token/0x2A46f2fFD99e19a89476E2f62270e0a35bBf0756-40913",
+    ],
+    provider => "https://www.nftndx.io/",
+    url => "https://www.nftndx.io/*",
+  },
+  "NoPaste" => {
+    api => "https://oembed.nopaste.ml",
+    examples => [
+      "https://nopaste.ml/?l=js#XQAAAQAfAAAAAAAAAAAfCAjn2eXL/EQkHNwvz5ZUMLv7U6V3VDuE5C733AY6VA17Vf//8KnAAA==",
+    ],
+    provider => "https://nopaste.ml",
+    url => ["https://nopaste.ml/*"],
+  },
+  "Observable" => {
+    api => "https://api.observablehq.com/oembed",
+    examples => ["https://observablehq.com/\@d3/stacked-to-grouped-bars"],
+    params => {format => "json"},
+    provider => "https://observablehq.com",
+    url => [
+      "https://observablehq.com/\@*/*", "https://observablehq.com/d/*",
+      "https://observablehq.com/embed/*",
+    ],
+  },
   "Odds.com.au" => {
     api => "https://www.odds.com.au/api/oembed/",
     examples => ["https://www.odds.com.au/odds/rugby-league/nrl/"],
     params => {format => "json"},
     provider => "https://www.odds.com.au",
     url => ["https://www.odds.com.au/*", "https://odds.com.au/*"],
+  },
+  "Odesli(formerlySonglink)" => {
+    api => "https://song.link/oembed",
+    examples => [
+      "https://song.link/us/i/1182062656",
+      "https://song.link/dpmo",
+      "https://song.link/album/s/0K4pIOOsfJ9lK8OjrZfXzd",
+      "https://artist.link/mars",
+    ],
+    params => {format => "json"},
+    provider => "https://odesli.co",
+    url => [
+      "https://song.link/*", "https://album.link/*",
+      "https://artist.link/*", "https://playlist.link/*",
+      "https://pods.link/*", "https://mylink.page/*",
+      "https://odesli.co/*",
+    ],
+  },
+  "Odysee" => {
+    api => "https://odysee.com/\$/oembed",
+    examples => [
+      "https://odysee.com/\@veritasium:f/we-built-an-unrideable-bike-to-show-how:b",
+      "https://odysee.com/\@veritasium:f/we-built-an-unrideable-bike-to-show-how:b",
+      "https://odysee.com/we-built-an-unrideable-bike-to-show-how:b",
+    ],
+    params => {format => "json"},
+    provider => "https://odysee.com",
+    url => ["https://odysee.com/*/*", "https://odysee.com/*"],
   },
   "OfficialFM" => {
     api => "http://official.fm/services/oembed.{format}",
@@ -1162,13 +1532,11 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://omniscope.me/",
     url => ["https://omniscope.me/*"],
   },
-  "OnAol" => {
-    api => "http://on.aol.com/api",
-    examples => [
-      "http://on.aol.com/video/plans-to-clone-john-lennon-using-one-of-his-teeth-517906689",
-    ],
-    provider => "http://on.aol.com/",
-    url => ["http://on.aol.com/video/*"],
+  "OmnyStudio" => {
+    api => "https://omny.fm/oembed",
+    examples => ["https://omny.fm/shows/adapting/derek-guille"],
+    provider => "https://omnystudio.com",
+    url => ["https://omny.fm/shows/*"],
   },
   "OraTV" => {
     api => "https://www.ora.tv/oembed/*?format={format}",
@@ -1197,13 +1565,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "http://orbitvu.co/001/*/1/2/orbittour/*/view",
     ],
   },
-  "Oumy" => {
-    api => "https://www.oumy.com/oembed",
-    examples => ["https://www.oumy.com/v/0NmY0agdvcA7wlvIXbJaBzA"],
-    params => {format => "json"},
-    provider => "https://www.oumy.com/",
-    url => ["https://www.oumy.com/v/*"],
-  },
   "Outplayed.tv" => {
     api => "https://outplayed.tv/oembed",
     examples => ["https://outplayed.tv/media/KwjQG"],
@@ -1230,6 +1591,25 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://www.oz.com/",
     url => ["https://www.oz.com/*/video/*"],
   },
+  "Padlet" => {
+    api => "https://padlet.com/oembed/",
+    examples => ["https://padlet.com/cogdogblog/aos9fosbbwk4"],
+    params => {format => "json"},
+    provider => "https://padlet.com/",
+    url => ["https://padlet.com/*"],
+  },
+  "PandaVideo" => {
+    api => "https://api-v2.pandavideo.com.br/oembed",
+    examples => [
+      "https://player-vz-ded14ebd-85a.tv.pandavideo.com.br/embed/?v=3b101f05-84aa-4de0-9b64-71f1855388af",
+    ],
+    provider => "https://pandavideo.com/",
+    url => [
+      "https://*.tv.pandavideo.com.br/embed/?v=*",
+      "https://*.tv.pandavideo.com.br/*/playlist.m3u8",
+      "https://dashboard.pandavideo.com.br/#/videos/*",
+    ],
+  },
   "Pastery" => {
     api => "https://www.pastery.net/oembed",
     examples =>
@@ -1246,6 +1626,38 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     examples => ["https://beta.pingvp.com.kpnis.nl/v/index.php?v=anxXNrIi31"],
     provider => "https://www.pingvp.com/",
     url => "https://www.pingvp.com/*",
+  },
+  "Pinpoll" => {
+    api => "https://tools.pinpoll.com/oembed",
+    examples => [
+      "https://tools.pinpoll.com/embed/1",
+      "https://tools.pinpoll.com/embed/answer/5",
+      "https://tools.pinpoll.com/embed/collection/2",
+      "https://tools.pinpoll.com/embed/quiz/1",
+    ],
+    provider => "https://www.pinpoll.com/products/tools",
+    url => ["https://tools.pinpoll.com/embed/*"],
+  },
+  "Pinterest" => {
+    api => "https://www.pinterest.com/oembed.json",
+    examples => [
+      "https://www.pinterest.com/pin/99360735500167749/",
+      "https://www.pinterest.com/kentbrew/",
+      "https://www.pinterest.com/kentbrew/art-i-wish-i-d-made/",
+    ],
+    provider => "https://www.pinterest.com",
+    url => ["https://www.pinterest.com/*"],
+  },
+  "PitchHub" => {
+    api => "https://*.pitchhub.com.com/en/public/oembed",
+    examples => [
+      "https://player-dev.pitchhub.com/en/public/player/9330fd8734deb58345c80dd124203b57",
+      "https://player-staging.pitchhub.com/en/public/player/296599c9ff2a945eb33d403929e92f35",
+      "https://player.pitchhub.com/en/public/player/296599c9ff2a945eb33d403929e92f35",
+    ],
+    params => {format => "json"},
+    provider => "https://www.pitchhub.com/",
+    url => ["https://*.pitchhub.com/en/public/player/*"],
   },
   "Pixdor" => {
     api => "https://store.pixdor.com/oembed",
@@ -1268,16 +1680,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://podbean.com",
     url => ["https://*.podbean.com/e/*", "http://*.podbean.com/e/*"],
   },
-  "PolarisShare" => {
-    api => "https://api.polarishare.com/rest/api/oembed",
-    examples => [
-      "https://www.polarishare.com/deandean/decompany-1-0-whitepaper-4usqr4",
-      "https://www.polarishare.com/Chris Lee/dive-into-icon-iq2ovh",
-      "https://www.polarishare.com/Chris Lee/stress-at-work-tips-to-reduce-and-manage-job-and-workplace-stress-qwv0b3",
-    ],
-    provider => "https://www.polarishare.com/",
-    url => ["https://www.polarishare.com/*/*"],
-  },
   "PollDaddy" => {
     api => "http://polldaddy.com/oembed/",
     examples => ["http://polldaddy.com/ratings/39/"],
@@ -1287,11 +1689,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "http://*.polldaddy.com/s/*", "http://*.polldaddy.com/poll/*",
       "http://*.polldaddy.com/ratings/*",
     ],
-  },
-  "Port" => {
-    api => "https://api.sellwithport.com/v1.0/buyer/oembed",
-    provider => "http://www.sellwithport.com/",
-    url => ["https://app.sellwithport.com/#/buyer/*"],
   },
   "Portfolium" => {
     api => "https://api.portfolium.com/oembed",
@@ -1303,16 +1700,25 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://portfolium.com",
     url => ["https://portfolium.com/entry/*"],
   },
-  "posiXion" => {
-    api => "http://posixion.com/services/oembed/",
+  "Present" => {
+    api => "https://gateway.cobalt.run/present/decks/oembed",
     examples => [
-      "https://posixion.com/question/Is-There-Anything-I-Should-Do-About-Climate-Change",
+      "https://present.do/decks/60d20b8dffff3c06649f7a18",
+      "https://present.do/decks/60c560548ae5e6673633c424",
+      "https://present.do/decks/60e2a2203a59f57771f15789",
     ],
-    provider => "https://posixion.com/",
-    url => [
-      "https://posixion.com/question/*",
-      "https://posixion.com/*/question/*",
+    provider => "https://present.do",
+    url => ["https://present.do/decks/*"],
+  },
+  "PreziVideo" => {
+    api => "https://prezi.com/v/oembed",
+    examples => [
+      "https://prezi.com/v/zrmitn0impxx/",
+      "https://prezi.com/v/zrmitn0impxx/",
     ],
+    params => {format => "json"},
+    provider => "https://prezi.com/",
+    url => ["https://prezi.com/v/*", "https://*.prezi.com/v/*"],
   },
   "Quiz.biz" => {
     api => "http://www.quiz.biz/api/oembed",
@@ -1328,15 +1734,39 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.quizz.biz/",
     url => ["http://www.quizz.biz/quizz-*.html"],
   },
-  "RapidEngage" => {
-    api => "https://rapidengage.com/api/oembed",
+  "RadioPublic" => {
+    api => "https://oembed.radiopublic.com/oembed",
     examples => [
-      "https://rapidengage.com/s/6b1faa05",
-      "https://rapidengage.com/s/6b1faa05",
+      "https://radiopublic.com/the-bucket-podcast-WD03oE:RXhwbG9yZQ",
+      "https://radiopublic.com/PodSaveAmerica:dHJlbmRpbmctaW4tc2VhcmNo",
     ],
     params => {format => "json"},
-    provider => "https://rapidengage.com",
-    url => ["https://rapidengage.com/s/*"],
+    provider => "https://radiopublic.com",
+    url => [
+      "https://play.radiopublic.com/*", "https://radiopublic.com/*",
+      "https://www.radiopublic.com/*", "http://play.radiopublic.com/*",
+      "http://radiopublic.com/*", "http://www.radiopublic.com/*",
+      "https://*.radiopublic.com/*",
+    ],
+  },
+  "Raindrop" => {
+    api => "https://pub.raindrop.io/api/oembed",
+    examples => ["https://raindrop.io/exentrich/design-66"],
+    provider => "https://raindrop.io",
+    url => [
+      "https://raindrop.io/*", "https://raindrop.io/*/*",
+      "https://raindrop.io/*/*/*", "https://raindrop.io/*/*/*/*",
+    ],
+  },
+  "rcvis" => {
+    api => "https://animatron.com/oembed",
+    provider => "https://www.rcvis.com/",
+    url => [
+      "https://www.rcvis.com/v/*",
+      "https://www.rcvis.com/visualize=*",
+      "https://www.rcvis.com/ve/*",
+      "https://www.rcvis.com/visualizeEmbedded=*",
+    ],
   },
   "Reddit" => {
     api => "https://www.reddit.com/oembed",
@@ -1358,20 +1788,10 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     url => ["http://rwire.com/*"],
   },
   "Replit" => {
-    api => "https://repl.it/data/oembed",
-    examples => ["https://repl.it/\@timmy_i_chen/flask-boilerplate?lite=1"],
-    params => {format => "json", outputonly => 1},
-    provider => "https://repl.it/",
-    url => ["https://repl.it/\@*/*"],
-  },
-  "RepubHub" => {
-    api => "http://repubhub.icopyright.net/oembed.act",
-    examples => [
-      "http://repubhub.icopyright.net/freePost.act?tag=3.11150?icx_id=918814",
-    ],
-    params => {format => "json"},
-    provider => "http://repubhub.icopyright.net/",
-    url => ["http://repubhub.icopyright.net/freePost.act?*"],
+    api => "https://replit.com/data/oembed",
+    examples => ["https://replit.com/\@replitfaris/python-hello-world"],
+    provider => "https://replit.com/",
+    url => ["https://repl.it/\@*/*", "https://replit.com/\@*/*"],
   },
   "ReverbNation" => {
     api => "https://www.reverbnation.com/oembed",
@@ -1387,19 +1807,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://www.reverbnation.com/*",
       "https://www.reverbnation.com/*/songs/*",
     ],
-  },
-  "RiffReporter" => {
-    api => "https://www.riffreporter.de/service/oembed",
-    examples => [
-      "https://www.riffreporter.de/was-ist-riffreporter/",
-      "https://www.riffreporter.de/was-ist-riffreporter/",
-      "https://www.riffreporter.de/was-ist-riffreporter/",
-      "https://www.riffreporter.de/was-ist-riffreporter/",
-      "https://www.riffreporter.de/was-ist-riffreporter/",
-    ],
-    params => {service => "json"},
-    provider => "https://www.riffreporter.de/",
-    url => "https://www.riffreporter.de/*",
   },
   "Roomshare" => {
     api => "http://roomshare.jp/en/oembed.{format}",
@@ -1424,6 +1831,18 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://rumble.com/",
     url => "https://rumble.com/*",
   },
+  "Runkit" => {
+    api => "https://embed.runkit.com/oembed",
+    examples => ["https://runkit.com/runkit/welcome"],
+    provider => "https://runkit.com",
+    url => ["http://embed.runkit.com/*,", "https://embed.runkit.com/*,"],
+  },
+  "Saooti" => {
+    api => "https://octopus.saooti.com/oembed",
+    examples => ["https://octopus.saooti.com/main/pub/podcast/2525"],
+    provider => "https://octopus.saooti.com",
+    url => ["https://octopus.saooti.com/main/pub/podcast/*"],
+  },
   "SapoVideos" => {
     api => "http://videos.sapo.pt/oembed",
     examples => ["http://videos.sapo.pt/dNbiosGa9YZHfLrhkA88"],
@@ -1433,8 +1852,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
   },
   "Screen9" => {
     api => "https://api.screen9.com/oembed",
-    examples =>
-        ["https://videosite.screen9.tv/media/u6txqFxdedOXiyg2lOUmTQ/crane",],
+    examples => [
+      "https://videosite.screen9.tv/media/u6txqFxdedOXiyg2lOUmTQ/crane",
+    ],
     provider => "http://www.screen9.com/",
     url => ["https://console.screen9.com/*", "https://*.screen9.tv/*"],
   },
@@ -1446,7 +1866,7 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
     params => {format => "json"},
     provider => "http://www.screencast.com/",
-    url => "https://www.screencast.com/*",
+    url => ["http://www.screencast.com/*"],
   },
   "Screenr" => {
     api => "http://www.screenr.com/api/oembed.{format}",
@@ -1500,6 +1920,19 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://shoudio.com",
     url => ["http://shoudio.com/*", "http://shoud.io/*"],
   },
+  "ShowbyAnimaker" => {
+    api => "https://api.getshow.io/oembed.{format}",
+    examples => [
+      "https://present.getshow.io/share/Mcm3a3YBgj8xrtrWURYz",
+      "https://present.getshow.io/share/Mcm3a3YBgj8xrtrWURYz",
+      "https://app.getshow.io/embed/iframe/?media=Mcm3a3YBgj8xrtrWURYz",
+      "https://app.getshow.io/embed/iframe/?media=Mcm3a3YBgj8xrtrWURYz",
+    ],
+    provider => "https://getshow.io/",
+    url => [
+      "https://app.getshow.io/iframe/*", "https://*.getshow.io/share/*",
+    ],
+  },
   "ShowtheWay,actionablelocationinfo" => {
     api => "https://showtheway.io/oembed",
     examples => [
@@ -1531,23 +1964,27 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     examples => [
       "https://sketchfab.com/models/e7995659092c4d8c92031b0a03887cfa",
       "https://sketchfab.com/sketchfab/folders/5ae73138e4a1477fb87b6f48d2bfccbe",
+      "https://sketchfab.com/3d-models/loring-tweet-power-line-9a48434e545f44d08801c8ce2a72e41b",
     ],
     provider => "http://sketchfab.com",
     url => [
-      "http://sketchfab.com/models/*", "https://sketchfab.com/models/*",
+      "http://sketchfab.com/*models/*",
+      "https://sketchfab.com/*models/*",
       "https://sketchfab.com/*/folders/*",
     ],
   },
   "SlideShare" => {
     api => "https://www.slideshare.net/api/oembed/2",
     examples =>
-        ["https://www.slideshare.net/haraldf/business-quotes-for-2011"],
+        ["https://www.slideshare.net/haraldf/business-quotes-for-2011",],
     params => {format => "json"},
-    provider => "https://www.slideshare.net/",
+    provider => "http://www.slideshare.net/",
     url => [
-      "https://www.slideshare.net/*/*", "https://fr.slideshare.net/*/*",
-      "https://de.slideshare.net/*/*", "https://es.slideshare.net/*/*",
-      "https://pt.slideshare.net/*/*",
+      "https://www.slideshare.net/*/*", "http://www.slideshare.net/*/*",
+      "https://fr.slideshare.net/*/*", "http://fr.slideshare.net/*/*",
+      "https://de.slideshare.net/*/*", "http://de.slideshare.net/*/*",
+      "https://es.slideshare.net/*/*", "http://es.slideshare.net/*/*",
+      "https://pt.slideshare.net/*/*", "http://pt.slideshare.net/*/*",
     ],
   },
   "SmashNotes" => {
@@ -1561,6 +1998,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://smashnotes.com/p/*",
       "https://smashnotes.com/p/*/e/* - https://smashnotes.com/p/*/e/*/s/*",
     ],
+  },
+  "Smrthi" => {
+    api => "https://www.smrthi.com/api/oembed",
+    examples => [
+      "https://www.smrthi.com/book/RigVeda/1.1.1",
+      "https://www.smrthi.com/book/RigVeda/1.5.3",
+    ],
+    provider => "https://www.smrthi.com",
+    url => ["https://www.smrthi.com/book/*"],
   },
   "SmugMug" => {
     api => "https://api.smugmug.com/services/oembed/",
@@ -1580,17 +2026,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://www.socialexplorer.com/*/embed",
     ],
   },
-  "Songlink" => {
-    api => "https://song.link/oembed",
-    examples => [
-      "https://song.link/us/i/1182062656",
-      "https://song.link/dpmo",
-      "https://song.link/album/s/0K4pIOOsfJ9lK8OjrZfXzd",
-    ],
-    params => {format => "json"},
-    provider => "https://song.link",
-    url => ["https://song.link/*"],
-  },
   "SoundCloud" => {
     api => "https://soundcloud.com/oembed",
     examples => [
@@ -1599,20 +2034,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
     params => {format => "json"},
     provider => "http://soundcloud.com/",
-    url => ["http://soundcloud.com/*", "https://soundcloud.com/*"],
-  },
-  "Soundsgood" => {
-    api => "https://play.soundsgood.co/oembed",
-    examples => [
-      "https://play.soundsgood.co/playlist/24h-avec-nuits-fauves",
-      "https://play.soundsgood.co/playlist/pour-siffloter-sur-les-routes",
-      "https://play.soundsgood.co/playlist/nova-soundclash-or-septembre-2016",
-    ],
-    params => {format => "json"},
-    provider => "https://soundsgood.co",
     url => [
-      "https://play.soundsgood.co/playlist/*",
-      "https://soundsgood.co/playlist/*",
+      "http://soundcloud.com/*", "https://soundcloud.com/*",
+      "https://soundcloud.app.goog.gl/*",
     ],
   },
   "SpeakerDeck" => {
@@ -1621,24 +2045,14 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://speakerdeck.com",
     url => ["http://speakerdeck.com/*/*", "https://speakerdeck.com/*/*"],
   },
-  "Spotful" => {
-    api => "https://api.bespotful.com/oembed",
-    examples => [
-      "https://play.bespotful.com/3457", "https://play.bespotful.com/3457",
-      "https://play.bespotful.com/3457",
-    ],
-    params => {format => "json"},
-    provider => "https://bespotful.com",
-    url => ["http://play.bespotful.com/*"],
-  },
   "Spotify" => {
-    api => "https://embed.spotify.com/oembed/",
+    api => "https://open.spotify.com/oembed",
     examples => [
       "https://open.spotify.com/track/2qToAcex0ruZfbEbAy9OhW",
       "spotify:artist:7ae4vgLLhir2MCjyhgbGOQ",
     ],
     provider => "https://spotify.com/",
-    url => ["https://*.spotify.com/*"],
+    url => ["https://open.spotify.com/*"],
   },
   "Spreaker" => {
     api => "https://api.spreaker.com/oembed",
@@ -1649,6 +2063,18 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "https://www.spreaker.com/",
     url => ["http://*.spreaker.com/*", "https://*.spreaker.com/*"],
+  },
+  "SproutVideo" => {
+    api => "http://sproutvideo.com/oembed.{format}",
+    examples => [
+      "http://sproutvideo.com/videos/709adcb31f19e5c6f8",
+      "http://sproutvideo.com/videos/709adcb31f19e5c6f8",
+      "https://sproutvideo-example.vids.io/videos/709adcb31f19e5c6f8/sproutvideo-superheroes",
+      "https://sproutvideo-example.vids.io/videos/709adcb31f19e5c6f8/sproutvideo-superheroes",
+    ],
+    provider => "https://sproutvideo.com",
+    url =>
+        ["https://sproutvideo.com/videos/*", "https://*.vids.io/videos/*",],
   },
   "StanfordDigitalRepository" => {
     api => "https://purl.stanford.edu/embed.{format}",
@@ -1668,14 +2094,33 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://streamable.com/",
     url => ["http://streamable.com/*", "https://streamable.com/*"],
   },
-  "StreamOneCloud" => {
-    api => "https://content.streamonecloud.net/oembed",
+  "Streamio" => {
+    api => "https://streamio.com/api/v1/oembed",
     examples => [
-      "https://content.streamonecloud.net/embed/account=2zhpQ4DUe5oB/item=OB5psqlNP0MR/tears-of-steel.html",
+      "https://23m.io/yDa7W", "https://s3m.io/rCNma",
+      "https://23m.io/HkJfp",
+    ],
+    provider => "https://www.streamio.com",
+    url => ["https://s3m.io/*", "https://23m.io/*"],
+  },
+  "Subscribi" => {
+    api => "https://subscribi.io/api/oembed",
+    examples => ["https://subscribi.io/subscribe/5f63b2b306cb71c069272c47"],
+    provider => "https://subscribi.io/",
+    url => ["https://subscribi.io/api/oembed*"],
+  },
+  "Sudomemo" => {
+    api => "https://www.sudomemo.net/oembed",
+    examples => [
+      "https://flipnot.es/8UYNV9",
+      "https://www.sudomemo.net/watch/75D7C9_135509C9F1AA8_000",
     ],
     params => {format => "json"},
-    provider => "https://www.streamone.nl",
-    url => ["https://content.streamonecloud.net/embed/*"],
+    provider => "https://www.sudomemo.net/",
+    url => [
+      "https://www.sudomemo.net/watch/*", "http://www.sudomemo.net/watch/*",
+      "https://flipnot.es/*", "http://flipnot.es/*",
+    ],
   },
   "Sutori" => {
     api => "https://www.sutori.com/api/oembed",
@@ -1692,6 +2137,26 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "https://www.sway.com",
     url => ["https://sway.com/*", "https://www.sway.com/*"],
+  },
+  "SwayOffice" => {
+    api => "https://sway.office.com/api/v1.0/oembed",
+    examples => ["https://sway.office.com/ZCftQ83K9iHgOCH0"],
+    params => {format => "json"},
+    provider => "https://sway.office.com",
+    url => ["https://sway.office.com/*"],
+  },
+  "Synthesia" => {
+    api =>
+        "https://69jr5v75rc.execute-api.eu-west-1.amazonaws.com/prod/v2/oembed",
+    examples => [
+      "https://share.synthesia.io/bcd7bafb-3614-4ab4-8644-75b73bec25de",
+      "https://share.synthesia.io/bcd7bafb-3614-4ab4-8644-75b73bec25de",
+      "https://share.synthesia.io/bcd7bafb-3614-4ab4-8644-75b73bec25de",
+      "https://share.synthesia.io/bcd7bafb-3614-4ab4-8644-75b73bec25de",
+    ],
+    params => {format => "json"},
+    provider => "https://www.synthesia.io/",
+    url => ["https://share.synthesia.io/*"],
   },
   "TED" => {
     api => "https://www.ted.com/services/v1/oembed.{format}",
@@ -1743,6 +2208,13 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://www.tickcounter.com/worldclock/*",
     ],
   },
+  "TikTok" => {
+    api => "https://www.tiktok.com/oembed",
+    examples =>
+        ["https://www.tiktok.com/\@scout2015/video/6718335390845095173",],
+    provider => "http://www.tiktok.com/",
+    url => ["https://www.tiktok.com/*/video/*"],
+  },
   "Toornament" => {
     api => "https://widget.toornament.com/oembed",
     examples => [
@@ -1762,6 +2234,26 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.topy.se/",
     url => ["http://www.topy.se/image/*"],
   },
+  "Totango" => {
+    api => "https://app-test.totango.com/oembed",
+    provider => "https://totango.com",
+    url => ["https://app-test.totango.com/*"],
+  },
+  "TrinityAudio" => {
+    api => "https://trinitymedia.ai/player/trinity-oembed",
+    examples =>
+        ["ttps://trinityaudio.ai/oembed?unitId=1&url=https://example.com",],
+    provider => "https://trinityaudio.ai",
+    url => [
+      "https://trinitymedia.ai/player/*",
+      "http://trinitymedia.ai/player/*",
+    ],
+  },
+  "Tumblr" => {
+    api => "https://www.tumblr.com/oembed/1.0",
+    provider => "https://www.tumblr.com",
+    url => ["https://*.tumblr.com/post/*"],
+  },
   "Tuxx" => {
     api => "https://www.tuxx.be/services/oembed",
     examples => ["http://www.tuxx.be/nl/feestdagen_en_gedenkdagen/"],
@@ -1776,22 +2268,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://tvcf.co.kr",
     url => ["https://play.tvcf.co.kr/*", "https://*.tvcf.co.kr/*"],
   },
-  "Twitch" => {
-    api => "https://api.twitch.tv/v5/oembed",
-    examples => ["https://www.twitch.tv/riotgames/v/72749628"],
-    provider => "https://www.twitch.tv",
-    url => [
-      "http://clips.twitch.tv/*", "https://clips.twitch.tv/*",
-      "http://www.twitch.tv/*", "https://www.twitch.tv/*",
-      "http://twitch.tv/*", "https://twitch.tv/*",
-    ],
-  },
   "Twitter" => {
     api => "https://publish.twitter.com/oembed",
-    examples => ["https://twitter.com/Interior/status/507185938620219395"],
+    examples => [
+      "https://twitter.com/Interior/status/463440424141459456",
+      "https://twitter.com/Interior/status/463440424141459456",
+    ],
     provider => "http://www.twitter.com/",
     url => [
-      "https://twitter.com/*/status/*",
+      "https://twitter.com/*", "https://twitter.com/*/status/*",
       "https://*.twitter.com/*/status/*",
     ],
   },
@@ -1814,11 +2299,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://typlog.com",
     url => "https://typlog.com/*",
   },
-  "Ubideo" => {
-    api => "https://player.ubideo.com/api/oembed.json",
-    examples => ["https://player.ubideo.com/myownusername"],
-    provider => "https://player.ubideo.com/",
-    url => ["https://player.ubideo.com/*"],
+  "UAPod" => {
+    api => "https://uapod.univ-antilles.fr/oembed",
+    examples => [
+      "https://uapod.univ-lille.fr/video/0001-clip-pod/",
+      "https://uapod.univ-lille.fr/video/0001-clip-pod/",
+    ],
+    params => {format => "json"},
+    provider => "https://uapod.univ-antilles.fr/",
+    url => ["https://uapod.univ-antilles.fr/video/*"],
   },
   "UniversityofCambridgeMap" => {
     api => "https://map.cam.ac.uk/oembed/",
@@ -1836,16 +2325,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://mediatheque.univ-paris1.fr/",
     url => ["https://mediatheque.univ-paris1.fr/video/*"],
   },
-  "UOL" => {
-    api => "https://mais.uol.com.br/apiuol/v3/oembed/view",
+  "Upec.Pod" => {
+    api => "https://pod.u-pec.fr/oembed",
     examples => [
-      "https://mais.uol.com.br/view/qf3ks0vlifm7/15697800?types=A",
-      "https://tvuol.uol.com.br/video/whatsapp-dos-astros-valdivia-messi-e-neymar-na-resenha-das-eliminatorias-04024E1A3762DC896326",
-      "https://videos.bol.uol.com.br/video/filha-do-datena-na-playboy-e-silvio-platinado-veja-quem-deu-o-que-falar-0402CD1B3064DC896326",
+      "https://pod.u-pec.fr/video/0268-prammics-presentation/",
+      "https://pod.u-pec.fr/video/0268-prammics-presentation/",
     ],
     params => {format => "json"},
-    provider => "https://mais.uol.com.br/",
-    url => ["https://*.uol.com.br/view/*", "https://*.uol.com.br/video/*"],
+    provider => "https://pod.u-pec.fr/",
+    url => ["https://pod.u-pec.fr/video/*"],
   },
   "Ustream" => {
     api => "http://www.ustream.tv/oembed",
@@ -1863,29 +2351,9 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
     params => {share => "false"},
     provider => "https://www.ustudio.com",
-    url =>
-        ["https://*.ustudio.com/embed/*", "https://*.ustudio.com/embed/*/*",],
-  },
-  "Utposts" => {
-    api => "https://www.utposts.com/api/oembed",
-    examples => ["https://utposts.com/products/1"],
-    provider => "https://www.utposts.com/",
     url => [
-      "https://www.utposts.com/products/*",
-      "http://www.utposts.com/products/*",
-      "https://utposts.com/products/*",
-      "http://utposts.com/products/*",
+      "https://*.ustudio.com/embed/*", "https://*.ustudio.com/embed/*/*",
     ],
-  },
-  "Uttles" => {
-    api => "http://uttles.com/api/reply/oembed",
-    examples => [
-      "http://uttles.com/uttle/56b760264daebfd94ef293a2",
-      "http://uttles.com/uttle/56b760264daebfd94ef293a2",
-    ],
-    params => {format => "json"},
-    provider => "http://uttles.com",
-    url => ["http://uttles.com/uttle/*"],
   },
   "VeeRVR" => {
     api => "https://api.veer.tv/oembed",
@@ -1914,37 +2382,20 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "http://www.vevo.com/",
     url => ["http://www.vevo.com/*", "https://www.vevo.com/*"],
   },
-  "VideoJug" => {
-    api => "http://www.videojug.com/oembed.{format}",
-    examples => ["http://www.videojug.com/film/how-to-tie-a-knot-braid"],
-    provider => "http://www.videojug.com",
-    url => [
-      "http://www.videojug.com/film/*",
-      "http://www.videojug.com/interview/*",
-    ],
-  },
-  "Vidlit" => {
-    api => "https://api.vidl.it/oembed",
-    examples => ["https://vidl.it/mBPb4A", "https://vidl.it/mBPb4A"],
-    params => {format => "json"},
-    provider => "https://vidl.it/",
-    url => ["https://vidl.it/*"],
-  },
-  "Vidmizer" => {
-    api => "https://app-v2.vidmizer.com/api/oembed",
-    examples => [
-      "https://players.vidmizer.com/8582f97e-7c4f-49c7-be85-d61a95f4d8b3",
-    ],
-    provider => "https://www.vidmizer.com/",
-    url => ["https://players.vidmizer.com/*"],
+  "Videfit" => {
+    api => "https://videfit.com/oembed",
+    examples => ["https://videfit.com/videos/651"],
+    provider => "https://videfit.com/",
+    url => ["https://videfit.com/videos/*"],
   },
   "Vidyard" => {
     api => "https://api.vidyard.com/dashboard/v1.1/oembed",
-    examples => ["http://play.vidyard.com/watch/3DiwGFalTRHDA"],
-    provider => "http://www.vidyard.com",
+    examples => ["https://video.vidyard.com/watch/njifKy4aJ5PgdYMf9GRNjU"],
+    params => {format => "json"},
+    provider => "https://vidyard.com",
     url => [
-      "http://embed.vidyard.com/*", "http://play.vidyard.com/*",
-      "http://share.vidyard.com/*", "http://*.hubs.vidyard.com/*",
+      "http://*.vidyard.com/*", "https://*.vidyard.com/*",
+      "http://*.hubs.vidyard.com/*", "https://*.hubs.vidyard.com/*",
     ],
   },
   "Vimeo" => {
@@ -1960,11 +2411,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
       "https://player.vimeo.com/video/*",
     ],
   },
-  "Viziosphere" => {
-    api => "http://viziosphere.com/services/oembed/",
-    examples => ["http://viziosphere.com/3dphoto?ref=VZP0002"],
-    provider => "http://www.viziosphere.com",
-    url => ["http://viziosphere.com/3dphoto*"],
+  "Viously" => {
+    api => "https://www.viously.com/oembed",
+    examples => [
+      "https://www.viously.com/positivr/gw2jTFu7Lsr",
+      "https://www.viously.com/positivr/gw2jTFu7Lsr",
+    ],
+    params => {format => "json"},
+    provider => "https://www.viously.com",
+    url => ["https://www.viously.com/*/*"],
   },
   "Vizydrop" => {
     api => "https://vizydrop.com/oembed",
@@ -1990,11 +2445,15 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://www.vlive.tv",
     url => ["https://www.vlive.tv/video/*"],
   },
-  "Vlurb" => {
-    api => "https://vlurb.co/oembed.json",
-    examples => ["https://vlurb.co/video/c0xphu"],
-    provider => "https://www.vlurb.co/",
-    url => ["http://vlurb.co/video/*", "https://vlurb.co/video/*"],
+  "Vouch" => {
+    api => "https://embed.vouchfor.com/v1/oembed",
+    examples => [
+      "https://app.vouchfor.com/pBjPDICb83",
+      "https://app.vouchfor.com/pBjPDICb83",
+    ],
+    params => {format => "json"},
+    provider => "https://www.vouchfor.com/",
+    url => ["https://*.vouchfor.com/*"],
   },
   "VoxSnap" => {
     api => "https://data.voxsnap.com/oembed",
@@ -2004,11 +2463,28 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     provider => "https://voxsnap.com/",
     url => ["https://article.voxsnap.com/*/*"],
   },
-  "wecandeo" => {
-    api => "http://play.wecandeo.com/oembed",
+  "Waltrack" => {
+    api => "https://waltrack.net/oembed",
+    examples => ["https://waltrack.net/product/532025814"],
+    provider => "https://waltrack/net",
+    url => ["https://waltrack.net/product/*"],
+  },
+  "Wave.video" => {
+    api => "https://embed.wave.video/oembed",
+    examples => ["https://embed.wave.video/382c2d5bbb3949858a0c3f2f"],
     params => {format => "json"},
-    provider => "http://www.wecandeo.com/",
-    url => "https://www.wecandeo.com/*",
+    provider => "https://wave.video",
+    url => ["https://watch.wave.video/*", "https://embed.wave.video/*"],
+  },
+  "wecandeo" => {
+    api => "https://play.wecandeo.com/oembed/",
+    examples => [
+      "https://play.wecandeo.com/video/v/?key=BOKNS9AQWrHDOWXC7DUr6tHd023xknvmIii8SOulPCMtAT1KxqmfHySho4pqLKNis4ZCy4IG7kZTQ431147TteoAieie",
+      "https://play.wecandeo.com/video/v/?key=BOKNS9AQWrHDOWXC7DUr6tHd023xknvmIii8SOulPCMtAT1KxqmfHySho4pqLKNis4ZCy4IG7kZTQ431147TteoAieie",
+    ],
+    params => {format => "json"},
+    provider => "https://www.wecandeo.com/",
+    url => ["https://play.wecandeo.com/video/v/*"],
   },
   "Wiredrive" => {
     api => "http://*.wiredrive.com/present-oembed/",
@@ -2033,64 +2509,79 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
   },
   "wizer.me" => {
-    api => "http://app.wizer.me/api/oembed.{format}",
+    api => "https://app.wizer.me/api/oembed.{format}",
     examples => [
       "https://app.wizer.me/preview/K6EKW",
       "https://app.wizer.me/preview/K6EKW",
     ],
-    provider => "http://www.wizer.me/",
-    url => [
-      "http://*.wizer.me/learn/*", "https://*.wizer.me/learn/*",
-      "http://*.wizer.me/preview/*", "https://*.wizer.me/preview/*",
-    ],
+    provider => "https://www.wizer.me/",
+    url => ["https://*.wizer.me/learn/*", "https://*.wizer.me/preview/*"],
   },
-  "Wootled" => {
-    api => "http://www.wootled.com/oembed",
-    examples => ["http://www.wootled.com/wg/0SbDvPCAzpWEstt"],
-    provider => "http://www.wootled.com/",
-    url => "https://www.wootled.com/*",
+  "Wokwi" => {
+    api => "https://wokwi.com/api/oembed",
+    examples => ["https://wokwi.com/share/iq7UORC5aVcFKNdwy9sF"],
+    params => {format => "json"},
+    provider => "https://wokwi.com",
+    url => ["https://wokwi.com/share/*"],
+  },
+  "WolframCloud" => {
+    api => "https://www.wolframcloud.com/oembed",
+    examples => [
+      "https://www.wolframcloud.com/obj/b9e9ecd9-b523-4da8-a7da-948ecfc228a9",
+      "https://www.wolframcloud.com/obj/b9e9ecd9-b523-4da8-a7da-948ecfc228a9",
+      "https://www.wolframcloud.com/obj/b9e9ecd9-b523-4da8-a7da-948ecfc228a9",
+    ],
+    params => {format => "json"},
+    provider => "https://www.wolframcloud.com",
+    url => ["https://*.wolframcloud.com/*"],
   },
   "WordPress.com" => {
     api => "http://public-api.wordpress.com/oembed/",
     examples =>
         ["http://matt.wordpress.com/2011/07/14/clouds-over-new-york/"],
     params => {format => "json"},
-    provider => "http://wordpress.com/",
-    url => "https://wordpress.com/*",
-  },
-  "Xpression" => {
-    api => "https://web.xpression.jp/api/oembed",
-    examples => [
-      "https://web.xpression.jp/video/pr-12-12",
-      "https://web.xpression.jp/video/pr-12-12",
+    provider => "https://wordpress.com/",
+    url => [
+      "https://wordpress.com/*", "http://wordpress.com/*",
+      "https://*.wordpress.com/*", "http://*.wordpress.com/*",
+      "https://*.*.wordpress.com/*", "http://*.*.wordpress.com/*",
+      "https://wp.me/*", "http://wp.me/*",
     ],
-    params => {format => "json"},
-    provider => "https://web.xpression.jp",
-    url => ["https://web.xpression.jp/video/*"],
-  },
-  "Yes,IKnowIT!" => {
-    api => "http://yesik.it/s/oembed",
-    examples => ["http://yesik.it/EP15"],
-    provider => "http://yesik.it",
-    url => ["http://yesik.it/*", "http://www.yesik.it/*"],
-  },
-  "YFrog" => {
-    api => "http://www.yfrog.com/api/oembed",
-    examples => ["http://yfrog.com/jukynnj"],
-    provider => "http://yfrog.com/",
-    url => ["http://*.yfrog.com/*", "http://yfrog.us/*"],
   },
   "YouTube" => {
     api => "https://www.youtube.com/oembed",
     examples => [
       "http://www.youtube.com/watch?v=iwGFalTRHDA",
       "http://www.youtube.com/watch?v=iwGFalTRHDA",
+      "http://www.youtube.com/playlist?list=PLSL0f2Dh_snCsLgQ3J319RYQyctRlfJFc",
+      "https://youtube.com/playlist?list=PLpeDXSh4nHjRmry7-h62UHfo86evvMK7E",
+      "https://www.youtube.com/shorts/a12CpYea0i4",
     ],
     params => {format => "json"},
     provider => "https://www.youtube.com/",
     url => [
-      "https://*.youtube.com/watch*", "https://*.youtube.com/v/*",
+      "https://*.youtube.com/watch*",
+      "https://*.youtube.com/v/*",
       "https://youtu.be/*",
+      "https://*.youtube.com/playlist?list=*",
+      "https://youtube.com/playlist?list=*",
+      "https://*.youtube.com/shorts*",
+    ],
+  },
+  "Zeplin" => {
+    api => "https://app.zeplin.io/embed",
+    examples => [
+      "https://app.zeplin.io/project/5cdb386641eeab347e3f4d06/screen/5cdb3876201cf7684bbeebb9",
+      "https://app.zeplin.io/project/5cdb386641eeab347e3f4d06/screen/5cdb3876201cf7684bbeebb9/version/5cdb3876201cf7684bbeebba",
+      "https://app.zeplin.io/project/5cdb386641eeab347e3f4d06/styleguide/components?coid=5cd3731e20f8ff5736db476b",
+      "https://app.zeplin.io/styleguide/5cd36efbc6c39a038ad38c79/components?coid=5cd3731e20f8ff5736db476b",
+    ],
+    provider => "https://zeplin.io",
+    url => [
+      "https://app.zeplin.io/project/*/screen/*",
+      "https://app.zeplin.io/project/*/screen/*/version/*",
+      "https://app.zeplin.io/project/*/styleguide/components?coid=*",
+      "https://app.zeplin.io/styleguide/*/components?coid=*",
     ],
   },
   "ZingSoft" => {
@@ -2111,6 +2602,14 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     ],
     provider => "https://www.znipe.tv/",
     url => ["https://*.znipe.tv/*"],
+  },
+  "Zoomable" => {
+    api => "https://srv2.zoomable.ca/oembed",
+    examples => [
+      "https://srv2.zoomable.ca/viewer.php?i=img3665da501a53181f_lucas-benjamin-wQLAGv4_OYs-unsplash",
+    ],
+    provider => "https://zoomable.ca/",
+    url => ["https://srv2.zoomable.ca/viewer.php*"],
   },
 };
 
