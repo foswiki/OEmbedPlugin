@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013-2022 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2024 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -29,10 +29,6 @@ sub new {
 
   my $this = bless($class->SUPER::new(@_), $class);
 
-  my $workingDir = Foswiki::Func::getWorkArea('OEmbedPlugin');
-  $this->{cacheRoot} = $workingDir . '/cache';
-  $this->{cacheExpire} = "1 d";
-
   return $this;
 }
 
@@ -41,7 +37,7 @@ sub embed {
 
   my $url = $this->request_url($uri, $opt) or return;
 
-  my $ua = Foswiki::Contrib::CacheContrib::getUserAgent();
+  my $ua = Foswiki::Contrib::CacheContrib::getUserAgent("oembed");
   my $res = $ua->get($url);
 
   return unless defined $res;

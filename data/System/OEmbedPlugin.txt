@@ -1,17 +1,15 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418745014" format="1.1" version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1673980681" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
 %TOC%
 
-oEmbed is a format for allowing an embedded representation of a URL on third
-party sites. The simple API allows a website to display embedded content (such
-as photos or videos) when a user posts a link to that resource, without having
-to parse the resource directly.
+oEmbed is a format for enabling an embedded representation of a URL on third party websites. 
+The simple API allows a website to display embedded content (such as photos or videos) 
+when a user posts a link to that resource, without having to parse the resource directly.
 
-All you need to do to embed material from one of the supported providers is to
-add a link to it. The plugin will contact the provider and use the appropriate
-code to add it to the page, e.g. add an iframe for videos and the like. 
+All you need to do to embed material from one of the supported providers is add a link to it. 
+The plugin will contact the provider and use the appropriate code to add it to the page, e.g. an iframe for videos and the like.
 
 ---++ Supported providers
 
@@ -375,7 +373,6 @@ To display all examples stored in the provider records use:
 }%
 </verbatim>
 
-
 ---++ Examples
 
 ---+++ Youbtube
@@ -398,7 +395,6 @@ To display all examples stored in the provider records use:
 </verbatim>
 %EMBED{"https://www.flickr.com/photos/onement/1239189689/" height="400"}%
 
-
 ---++ Installation Instructions
 %$INSTALL_INSTRUCTIONS%
 
@@ -406,6 +402,9 @@ To display all examples stored in the provider records use:
 %$DEPENDENCIES%
 
 ---++ Change History
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+|  30 Apr 2024 | fixed use of !CacheContrib |
+|  30 May 2023 | fixed parsing video id from youtube iframes |
 |  05 May 2022 | added a few more oembed providers |
 |  03 Mar 2021 | adedd microsoft stream provider |
 |  22 Jan 2020 | imported provider from https://github.com/iamcal/oembed; implemented %OEMBED_PROVIDER  | 
@@ -431,11 +430,11 @@ To display all examples stored in the provider records use:
 
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2013-2022 Michael Daum"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
-%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25TOPIC%25"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2013-2024 Michael Daum"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
-%META:FIELD{name="Release" title="Release" value="%$RELEASE%"}%
-%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%TOPIC%"}%
-%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%TOPIC%"}%
-%META:FIELD{name="Version" title="Version" value="%$VERSION%"}%
+%META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%25TOPIC%25"}%
+%META:FIELD{name="Support" title="Support" value="Foswiki:Support/%25TOPIC%25"}%

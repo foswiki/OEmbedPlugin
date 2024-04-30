@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# OEmbedPlugin is Copyright (C) 2013-2022 Michael Daum http://michaeldaumconsulting.com
+# OEmbedPlugin is Copyright (C) 2013-2024 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@ use Foswiki::Func ();
 use Error qw(:try);
 use HTTP::Request ();
 use Foswiki::Plugins::OEmbedPlugin::Consumer ();
+use Foswiki::Contrib::CacheContrib ();
 
 use constant TRACE => 0;    # toggle me
 
@@ -148,7 +149,7 @@ sub EMBED {
   my $error;
 
   try {
-    _writeDebug("loading url");
+    _writeDebug("loading url $url");
     $response = $this->{consumer}->embed($url);
     #_writeDebug("response=".dump($response));
   } catch Error with {
@@ -184,11 +185,14 @@ sub EMBED {
 
     my $vid = '';
     my $html = $response->html || '';
-    if ($html =~ /www.youtube.com\/embed\/(.*)\?/) {
+    _writeDebug("html=$html");
+    if ($html =~ /www.youtube.com\/embed\/(.*?)\?/) {
       $vid = $1;
     }
+    _writeDebug("vid=$vid");
 
     my $thumbnailUrl = $params->{thumbnail_url} || 'https://img.youtube.com/vi/$vid/$quality.jpg';
+    _writeDebug("thumbnailUrl=$thumbnailUrl");
 
     my $quality = $params->{quality};
     if (defined $quality && $quality ne "" && $quality ne 'auto') {
@@ -264,6 +268,8 @@ sub EMBED {
   } else {
     $result = $response->render();
     if (defined $result) {
+      $result =~ s/\bwidth="\d+"/width="$params->{width}"/g if defined $params->{width};
+      $result =~ s/\bheight="\d+"/height="$params->{height}"/g if defined $params->{height};
       $result = '<literal>' . $result . '</literal>';
     }
   }
@@ -337,8 +343,10 @@ sub OEMBED_PROVIDER {
 sub urlExists {
   my ($this, $url) = @_;
 
+  _writeDebug("called urlExists($url)");
+
   my $request = HTTP::Request->new(HEAD => $url);
-  my $ua = Foswiki::Contrib::CacheContrib::getUserAgent();
+  my $ua = Foswiki::Contrib::CacheContrib::getUserAgent("oembed");
   my $res = $ua->request($request);
 
   return $res->is_success ? 1 : 0;

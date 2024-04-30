@@ -7,9 +7,6 @@
 # Otherwise embed.ly providers won't be available.
 $Foswiki::cfg{OEmbedPlugin}{EmbedlyKey} = '';
 
-# **NUMBER**
-$Foswiki::cfg{OEmbedPlugin}{CacheExpire} = 3600;
-
 # **PERL**
 # List of providers and their oEmbed API endpoints.
 # See http://oembed.com/ and http://embed.ly for more.
@@ -2267,18 +2264,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = {
     params => {format => "json"},
     provider => "http://tvcf.co.kr",
     url => ["https://play.tvcf.co.kr/*", "https://*.tvcf.co.kr/*"],
-  },
-  "Twitter" => {
-    api => "https://publish.twitter.com/oembed",
-    examples => [
-      "https://twitter.com/Interior/status/463440424141459456",
-      "https://twitter.com/Interior/status/463440424141459456",
-    ],
-    provider => "http://www.twitter.com/",
-    url => [
-      "https://twitter.com/*", "https://twitter.com/*/status/*",
-      "https://*.twitter.com/*/status/*",
-    ],
   },
   "TypeCast" => {
     api => "https://play.typecast.ai/oembed",
