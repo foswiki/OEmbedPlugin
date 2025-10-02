@@ -23,69 +23,74 @@ sub urlDecode {
   return $text;
 }
 
-my $existingProvider = getExistingProvider();
+#my $existingProvider = getExistingProvider();
 #print STDERR "existing provider: ".join(", ", sort keys %$existingProvider)."\n";
-my $numExisting = scalar(keys %$existingProvider);
+#my $numExisting = scalar(keys %$existingProvider);
 
-my %cfg = ();
+our %cfg = ();
 foreach my $fileName (@ARGV) {
   #print STDERR "### loading $fileName\n";
-  my $yml = LoadFile($fileName); 
 
-  #print STDERR "yml=".dump($yml)."\n";
+  if ($fileName =~ /\.spec$/) {
+    do $fileName;
+  } else {
+    my $yml = LoadFile($fileName); 
 
-  foreach my $item (@$yml) {
-    my $provider = $item->{provider_name};
-    $provider =~ s/ +//g;
+    #print STDERR "yml=".dump($yml)."\n";
 
-    my @examples = ();
-    my $params;
-    foreach my $example (@{$item->{endpoints}[0]{example_urls}}) {
-      my $uri = URI->new($example);
-      foreach my $key ($uri->query_param()) {
-        my $val = $uri->query_param($key);
+    foreach my $item (@$yml) {
+      my $provider = $item->{provider_name};
+      $provider =~ s/ +//g;
 
-        if ($key eq 'url') {
-          push @examples, urlDecode($val);
-          next;
+      my @examples = ();
+      my $params;
+      foreach my $example (@{$item->{endpoints}[0]{example_urls}}) {
+        my $uri = URI->new($example);
+        foreach my $key ($uri->query_param()) {
+          my $val = $uri->query_param($key);
+
+          if ($key eq 'url') {
+            push @examples, urlDecode($val);
+            next;
+          }
+
+          next if $key =~ /^(url|for|maxwidth|maxheight|autoplay|key|href|width|height|caller)$/i;
+          next unless $val;
+
+          $val = "json" if $val eq 'xml';
+          $params ||= {};
+          $params->{$key} = $val;
         }
-
-        next if $key =~ /^(url|for|maxwidth|maxheight|autoplay|key|href|width|height|caller)$/i;
-        next if $val eq '';
-
-        $val = "json" if $val eq 'xml';
-        $params ||= {};
-        $params->{$key} = $val;
       }
-    }
 
-    if ($existingProvider->{$provider}) {
-      #print STDERR "### $provider already exists \n";
-      #next;
-    }
+      #if ($existingProvider->{$provider}) {
+      #  print STDERR "### $provider already exists \n";
+      #  next;
+      #}
 
-    my $url = $item->{endpoints}[0]{schemes};
-    if (ref($url)) {
-      @{$url} = grep {/^https?:/} @$url;
+      my $url = $item->{endpoints}[0]{schemes};
+      if (ref($url)) {
+        @{$url} = grep {/^https?:/} @$url;
+      }
+      unless ($url) {
+        $url = $item->{provider_url};
+        $url =~ s/\/$//;
+        $url =~ s/^http:\/\//https:\/\//;
+        $url .= '/*';
+      };
+      $cfg{$provider} = {
+        provider => $item->{provider_url},
+        url => $url,
+        api => $item->{endpoints}[0]{url},
+      };
+      $cfg{$provider}{params} = $params if defined $params;
+      $cfg{$provider}{examples} = \@examples if @examples;
     }
-    unless ($url) {
-      $url = $item->{provider_url};
-      $url =~ s/\/$//;
-      $url =~ s/^http:\/\//https:\/\//;
-      $url .= '/*';
-    };
-    $cfg{$provider} = {
-      provider => $item->{provider_url},
-      url => $url,
-      api => $item->{endpoints}[0]{url},
-    };
-    $cfg{$provider}{params} = $params if defined $params;
-    $cfg{$provider}{examples} = \@examples if @examples;
   }
  
 }
 
-my $source = dump(\%cfg);
+my $source = dump(\%cfg) . ";";
 print '$Foswiki::cfg{OEmbedPlugin}{Providers} = ';
 Perl::Tidy::perltidy(
   argv => <<'EOA',
@@ -101,7 +106,3 @@ Perl::Tidy::perltidy(
 EOA
   source => \$source,
 );
-print ";\n";
-
-#print STDERR "### found ".scalar(keys %cfg)." new provider(s), $numExisting already exist\n";
-

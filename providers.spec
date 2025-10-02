@@ -1,16 +1,5 @@
-# ---+ Extensions
-# ---++ OEmbedPlugin
-# This is the configuration used by the <b>OEmbedPlugin</b>.
-
-# **STRING**
-# To use embed.ly as an oEmbed gateway, you'll have to register and copy-paste the api-key in here.
-# Otherwise embed.ly providers won't be available.
-$Foswiki::cfg{OEmbedPlugin}{EmbedlyKey} = '';
-
-# **PERL**
-# List of providers and their oEmbed API endpoints.
-# See https://oembed.com/ and https://embed.ly for more.
-$Foswiki::cfg{OEmbedPlugin}{Providers} = { "23HQ" => {
+$Foswiki::cfg{OEmbedPlugin}{Providers} = { 
+  "23HQ" => {
     api => "http://www.23hq.com/23/oembed",
     examples => ["http://www.23hq.com/mprove/photo/13297717"],
     provider => "http://www.23hq.com",
@@ -888,14 +877,6 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = { "23HQ" => {
     params => {format => "json"},
     provider => "https://app.getfader.com",
     url => ["https://app.getfader.com/projects/*/publish"],
-  },
-  "Fairtube" => {
-    api => "https://fair.tube/services/oembed",
-    examples => [
-      "https://fair.tube/services/oembed?url=https%3A%2F%2Ffair.tube%2Fw%2FvyWhAeahYCXJDtDLMx43AH",
-    ],
-    provider => "https://fair.tube",
-    url => ["https://fair.tube/"],
   },
   "FaithlifeTV" => {
     api => "https://faithlifetv.com/api/oembed",
@@ -3448,5 +3429,5 @@ $Foswiki::cfg{OEmbedPlugin}{Providers} = { "23HQ" => {
     provider => "https://zoomable.ca/",
     url => ["https://srv2.zoomable.ca/viewer.php*"],
   },
-};
-1;
+}
+;

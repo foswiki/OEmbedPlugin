@@ -1,7 +1,7 @@
 /*
  * video.js
  *
- * (c)opyright 2013-2022 Michael Daum http://michaeldaumconsulting.com
+ * (c)opyright 2013-2025 Michael Daum http://michaeldaumconsulting.com
  *
  * Licensed under the GPL license http://www.gnu.org/licenses/gpl.html
  *

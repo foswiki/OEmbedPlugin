@@ -11,4 +11,4 @@ OEmbedPlugin_installer.pl
 pub/System/OEmbedPlugin/video.css
 pub/System/OEmbedPlugin/video.js
 web-oembed
-oembed
+git

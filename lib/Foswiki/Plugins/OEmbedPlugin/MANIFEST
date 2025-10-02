@@ -5,9 +5,16 @@ lib/Foswiki/Plugins/OEmbedPlugin/Config.spec 0644
 lib/Foswiki/Plugins/OEmbedPlugin/Consumer.pm 0644
 lib/Foswiki/Plugins/OEmbedPlugin/Core.pm 0644
 lib/Foswiki/Plugins/OEmbedPlugin/DEPENDENCIES 0644
+lib/Foswiki/Plugins/OEmbedPlugin/extra.spec 0644
+lib/Foswiki/Plugins/OEmbedPlugin/footer.spec 0644
+lib/Foswiki/Plugins/OEmbedPlugin/header.spec 0644
+lib/Foswiki/Plugins/OEmbedPlugin/Makefile 0644
+lib/Foswiki/Plugins/OEmbedPlugin/MANIFEST 0644
 lib/Foswiki/Plugins/OEmbedPlugin.pm 0644
+lib/Foswiki/Plugins/OEmbedPlugin/providers.spec 0644
 lib/Web/oEmbed.pm 0644
 lib/Web/oEmbed/Response.pm 0644
+providers.spec 0644
 pub/System/OEmbedPlugin/Makefile 0644
 pub/System/OEmbedPlugin/play.png 0644
 pub/System/OEmbedPlugin/video.css 0644
@@ -16,6 +23,5 @@ pub/System/OEmbedPlugin/video.js 0644
 pub/System/OEmbedPlugin/video.js.gz 0644
 pub/System/OEmbedPlugin/video.uncompressed.css 0644
 pub/System/OEmbedPlugin/video.uncompressed.js 0644
-pub/System/OEmbedPlugin/vimeo.js.gz 0644
 templates/oembed.tmpl 0644
 tools/convert_providers 0755
